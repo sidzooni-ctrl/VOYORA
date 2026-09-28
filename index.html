@@ -1,0 +1,2731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOYORA — Your World, Your Way.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   VOYORA — Complete Single-File Stylesheet
+   ============================================ */
+:root {
+  --navy: #0a1628;
+  --navy-light: #142438;
+  --navy-mid: #1a2f4a;
+  --teal: #0d9488;
+  --teal-light: #14b8a6;
+  --teal-glow: rgba(20, 184, 166, 0.3);
+  --gold: #f59e0b;
+  --gold-light: #fbbf24;
+  --beige: #faf6f0;
+  --beige-dark: #f0e9de;
+  --white: #ffffff;
+  --gray-100: #f7f8fa;
+  --gray-200: #e5e8ed;
+  --gray-300: #cbd2dc;
+  --gray-400: #9aa5b4;
+  --gray-500: #6b7a8d;
+  --gray-600: #4a5568;
+  --gray-700: #2d3748;
+  --gray-800: #1a202c;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 999px;
+  --shadow-sm: 0 1px 3px rgba(10, 22, 40, 0.06);
+  --shadow-md: 0 4px 16px rgba(10, 22, 40, 0.08);
+  --shadow-lg: 0 12px 40px rgba(10, 22, 40, 0.12);
+  --shadow-xl: 0 24px 64px rgba(10, 22, 40, 0.16);
+  --shadow-glow: 0 0 40px rgba(20, 184, 166, 0.25);
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-height: 76px;
+  --container: 1240px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--gray-700);
+  background: var(--beige);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; font-size: inherit; }
+input, select, textarea { font-family: inherit; font-size: inherit; }
+ul, ol { list-style: none; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; color: var(--navy); }
+
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+.section { padding: 96px 0; }
+.section-sm { padding: 64px 0; }
+.text-center { text-align: center; }
+.text-teal { color: var(--teal); }
+.text-gold { color: var(--gold); }
+.text-muted { color: var(--gray-500); }
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-col { display: flex; flex-direction: column; }
+.gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .gap-16 { gap: 16px; } .gap-24 { gap: 24px; }
+.grid { display: grid; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.hidden { display: none !important; }
+
+.display-1 { font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: -0.03em; }
+.display-2 { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.02em; }
+.display-3 { font-size: clamp(1.5rem, 3vw, 2.25rem); letter-spacing: -0.01em; }
+.section-title { font-size: clamp(1.75rem, 3.5vw, 2.75rem); margin-bottom: 16px; }
+.section-subtitle { font-size: 1.1rem; color: var(--gray-500); max-width: 640px; margin: 0 auto 48px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 16px;
+}
+.eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--teal); border-radius: 2px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 28px; font-size: 0.95rem; font-weight: 600;
+  border-radius: var(--radius-full); transition: all var(--transition);
+  cursor: pointer; white-space: nowrap; position: relative; overflow: hidden;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+  color: var(--white); box-shadow: 0 4px 16px rgba(13, 148, 136, 0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13, 148, 136, 0.4); }
+.btn-secondary {
+  background: var(--white); color: var(--navy); border: 1.5px solid var(--gray-200);
+}
+.btn-secondary:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--navy); box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245, 158, 11, 0.4); }
+.btn-sm { padding: 10px 20px; font-size: 0.875rem; }
+.btn-lg { padding: 18px 36px; font-size: 1.05rem; }
+.btn-block { width: 100%; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+/* Navbar */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height);
+  background: rgba(250, 246, 240, 0.85); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(10, 22, 40, 0.06);
+  z-index: 1000; transition: all var(--transition);
+}
+.navbar.scrolled { background: rgba(250, 246, 240, 0.95); box-shadow: var(--shadow-md); }
+.navbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--navy); letter-spacing: -0.02em;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--teal), var(--navy));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-size: 1.1rem; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+}
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-link {
+  padding: 8px 16px; font-size: 0.9rem; font-weight: 500;
+  color: var(--gray-600); border-radius: var(--radius-full);
+  transition: all var(--transition-fast); position: relative; cursor: pointer;
+}
+.nav-link:hover { color: var(--navy); background: rgba(13, 148, 136, 0.08); }
+.nav-link.active { color: var(--teal); font-weight: 600; }
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+.nav-icon-btn {
+  width: 42px; height: 42px; border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray-600); font-size: 1.15rem;
+  transition: all var(--transition-fast); position: relative; cursor: pointer;
+}
+.nav-icon-btn:hover { background: rgba(13, 148, 136, 0.08); color: var(--teal); }
+.nav-badge {
+  position: absolute; top: 4px; right: 4px; min-width: 18px; height: 18px;
+  padding: 0 5px; background: var(--danger); color: var(--white);
+  font-size: 0.65rem; font-weight: 700; border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+}
+.hamburger {
+  display: none; width: 42px; height: 42px; border-radius: var(--radius-full);
+  align-items: center; justify-content: center; flex-direction: column; gap: 5px;
+}
+.hamburger span {
+  display: block; width: 20px; height: 2px; background: var(--navy);
+  border-radius: 2px; transition: all var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none; position: fixed; top: var(--nav-height); left: 0; right: 0;
+  background: var(--white); border-bottom: 1px solid var(--gray-200);
+  padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 999;
+  box-shadow: var(--shadow-lg); animation: slideDown 0.3s ease;
+}
+.mobile-menu.active { display: flex; }
+.mobile-menu .nav-link { padding: 14px 16px; font-size: 1rem; }
+
+/* Hero */
+.hero {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  padding: calc(var(--nav-height) + 40px) 0 80px; overflow: hidden;
+}
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.88) 0%, rgba(10, 22, 40, 0.65) 50%, rgba(13, 148, 136, 0.55) 100%);
+}
+.hero-content { position: relative; z-index: 2; max-width: 680px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full); color: var(--white);
+  font-size: 0.85rem; font-weight: 500; margin-bottom: 24px;
+}
+.hero-badge .dot {
+  width: 8px; height: 8px; background: var(--teal-light);
+  border-radius: 50%; box-shadow: 0 0 12px var(--teal-light);
+  animation: pulse 2s infinite;
+}
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem); color: var(--white);
+  letter-spacing: -0.04em; line-height: 0.95; margin-bottom: 20px;
+}
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--teal-light), var(--gold-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-tagline {
+  font-family: var(--font-display); font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-style: italic; color: var(--gold-light); margin-bottom: 20px;
+}
+.hero-desc {
+  font-size: 1.15rem; color: rgba(255, 255, 255, 0.85);
+  max-width: 540px; margin-bottom: 36px; line-height: 1.7;
+}
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-buttons .btn-secondary {
+  background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.3); color: var(--white);
+}
+.hero-buttons .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2); border-color: var(--white); color: var(--white);
+}
+
+/* Search Card */
+.search-card {
+  position: relative; z-index: 3; background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px); border-radius: var(--radius-xl); padding: 28px;
+  box-shadow: var(--shadow-xl); border: 1px solid rgba(255, 255, 255, 0.6);
+  margin-top: 48px; max-width: 900px;
+}
+.search-card h3 { font-size: 1.25rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.search-grid {
+  display: grid; grid-template-columns: 2fr 1.2fr 0.8fr 1fr auto;
+  gap: 12px; align-items: end;
+}
+.search-field { display: flex; flex-direction: column; gap: 6px; }
+.search-field label {
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--gray-500);
+}
+.search-field input, .search-field select {
+  padding: 12px 14px; border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-md); background: var(--white);
+  color: var(--navy); font-size: 0.92rem; transition: all var(--transition-fast); width: 100%;
+}
+.search-field input:focus, .search-field select:focus {
+  outline: none; border-color: var(--teal); box-shadow: 0 0 0 4px var(--teal-glow);
+}
+
+/* Cards */
+.card {
+  background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: all var(--transition);
+  border: 1px solid rgba(10, 22, 40, 0.04); display: flex; flex-direction: column;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.card-image {
+  position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--gray-200);
+}
+.card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+.card:hover .card-image img { transform: scale(1.08); }
+.card-badge {
+  position: absolute; top: 14px; left: 14px; padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px);
+  border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; color: var(--navy);
+}
+.card-fav {
+  position: absolute; top: 14px; right: 14px; width: 38px; height: 38px;
+  border-radius: var(--radius-full); background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center;
+  color: var(--gray-500); font-size: 1rem; transition: all var(--transition-fast); cursor: pointer;
+}
+.card-fav:hover, .card-fav.active { background: var(--danger); color: var(--white); transform: scale(1.1); }
+.card-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card-title { font-size: 1.15rem; font-family: var(--font-display); }
+.card-desc { font-size: 0.9rem; color: var(--gray-500); line-height: 1.6; flex: 1; }
+.card-meta {
+  display: flex; align-items: center; gap: 16px;
+  font-size: 0.85rem; color: var(--gray-500); flex-wrap: wrap;
+}
+.card-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 12px; border-top: 1px solid var(--gray-100); margin-top: auto;
+}
+.card-price { font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+.card-price small { font-size: 0.75rem; font-weight: 400; color: var(--gray-400); }
+
+/* AI Pick */
+.ai-pick {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(245, 158, 11, 0.08));
+  border: 1px solid rgba(13, 148, 136, 0.2); border-radius: var(--radius-md);
+  font-size: 0.85rem; color: var(--navy); line-height: 1.5; margin-top: 8px;
+}
+.ai-pick .sparkle { color: var(--gold); font-size: 1rem; }
+
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+.step-card {
+  background: var(--white); border-radius: var(--radius-lg); padding: 36px 28px;
+  position: relative; border: 1px solid rgba(10, 22, 40, 0.05);
+  transition: all var(--transition);
+}
+.step-card:hover {
+  transform: translateY(-6px); box-shadow: var(--shadow-lg);
+  border-color: rgba(13, 148, 136, 0.3);
+}
+.step-number {
+  font-family: var(--font-display); font-size: 3.5rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--teal), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1; margin-bottom: 16px; opacity: 0.9;
+}
+.step-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+.step-card p { color: var(--gray-500); font-size: 0.95rem; }
+
+/* Footer */
+.footer { background: var(--navy); color: rgba(255, 255, 255, 0.7); padding: 72px 0 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand .nav-logo { color: var(--white); margin-bottom: 16px; }
+.footer-brand p { font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
+.footer h4 {
+  color: var(--white); font-family: var(--font-body); font-size: 0.85rem;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 18px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 0.9rem; transition: color var(--transition-fast); cursor: pointer; }
+.footer-links a:hover { color: var(--teal-light); }
+.footer-bottom {
+  padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px; font-size: 0.85rem;
+}
+.footer-social { display: flex; gap: 10px; }
+.footer-social a {
+  width: 38px; height: 38px; border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08); display: flex;
+  align-items: center; justify-content: center; transition: all var(--transition-fast);
+}
+.footer-social a:hover { background: var(--teal); color: var(--white); transform: translateY(-3px); }
+
+/* Forms */
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.form-group label { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
+.form-group input, .form-group select, .form-group textarea {
+  padding: 14px 16px; border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-md); background: var(--white);
+  color: var(--navy); transition: all var(--transition-fast); width: 100%;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--teal); box-shadow: 0 0 0 4px var(--teal-glow);
+}
+.form-error { font-size: 0.8rem; color: var(--danger); display: none; }
+.form-error.visible { display: block; }
+
+/* Chips */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  padding: 10px 20px; border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-full); background: var(--white);
+  font-size: 0.9rem; font-weight: 500; color: var(--gray-600);
+  transition: all var(--transition-fast); cursor: pointer; user-select: none;
+}
+.chip:hover { border-color: var(--teal); color: var(--teal); }
+.chip.selected {
+  background: linear-gradient(135deg, var(--teal), var(--teal-light));
+  border-color: var(--teal); color: var(--white);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+}
+
+/* Progress */
+.progress-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 40px; }
+.progress-step {
+  flex: 1; height: 4px; background: var(--gray-200);
+  border-radius: var(--radius-full); transition: all var(--transition);
+}
+.progress-step.active { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+.progress-step.completed { background: var(--teal); }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 40px; }
+.timeline::before {
+  content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg, var(--teal), var(--gold)); border-radius: 2px;
+}
+.timeline-item { position: relative; margin-bottom: 36px; }
+.timeline-dot {
+  position: absolute; left: -40px; top: 4px; width: 32px; height: 32px;
+  border-radius: 50%; background: var(--white); border: 3px solid var(--teal);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; color: var(--teal); z-index: 1;
+}
+.timeline-content {
+  background: var(--white); border-radius: var(--radius-lg); padding: 20px;
+  box-shadow: var(--shadow-sm); border: 1px solid rgba(10, 22, 40, 0.05);
+  transition: all var(--transition);
+}
+.timeline-content:hover { box-shadow: var(--shadow-md); transform: translateX(4px); }
+.timeline-time {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; font-weight: 600; color: var(--teal);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+}
+
+/* Toast */
+.toast-container {
+  position: fixed; bottom: 24px; right: 24px; z-index: 10000;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.toast {
+  display: flex; align-items: center; gap: 12px; padding: 16px 20px;
+  background: var(--navy); color: var(--white); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl); font-size: 0.9rem; min-width: 280px;
+  max-width: 400px; animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-left: 4px solid var(--teal);
+}
+.toast.success { border-left-color: var(--success); }
+.toast.error { border-left-color: var(--danger); }
+.toast.warning { border-left-color: var(--warning); }
+.toast.info { border-left-color: var(--info); }
+.toast-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(10, 22, 40, 0.7);
+  backdrop-filter: blur(8px); z-index: 9999; display: none;
+  align-items: center; justify-content: center; padding: 24px;
+  animation: fadeIn 0.3s ease;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: var(--white); border-radius: var(--radius-xl); max-width: 560px;
+  width: 100%; max-height: 90vh; overflow-y: auto; padding: 32px;
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+  border-radius: var(--radius-full); display: flex; align-items: center;
+  justify-content: center; color: var(--gray-500); transition: all var(--transition-fast);
+}
+.modal-close:hover { background: var(--gray-100); color: var(--navy); }
+
+/* Loading */
+.loading-screen {
+  position: fixed; inset: 0; background: var(--navy); z-index: 99999;
+  display: none; align-items: center; justify-content: center;
+  flex-direction: column; gap: 32px; text-align: center; padding: 24px;
+}
+.loading-screen.active { display: flex; }
+.loading-spinner { width: 80px; height: 80px; position: relative; }
+.loading-spinner::before, .loading-spinner::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  border: 3px solid transparent;
+}
+.loading-spinner::before {
+  border-top-color: var(--teal-light); border-right-color: var(--teal-light);
+  animation: spin 1s linear infinite;
+}
+.loading-spinner::after {
+  border-bottom-color: var(--gold); border-left-color: var(--gold);
+  animation: spin 1.5s linear infinite reverse; inset: 12px;
+}
+.loading-text {
+  color: var(--white); font-family: var(--font-display);
+  font-size: 1.5rem; max-width: 480px;
+}
+.loading-subtext { color: rgba(255, 255, 255, 0.6); font-size: 0.95rem; }
+
+/* Section headers */
+.section-header { text-align: center; margin-bottom: 56px; }
+
+/* Chart */
+.chart-bar-container { display: flex; flex-direction: column; gap: 16px; }
+.chart-row { display: flex; align-items: center; gap: 16px; }
+.chart-label {
+  min-width: 140px; font-size: 0.9rem; font-weight: 500;
+  color: var(--gray-600); display: flex; align-items: center; gap: 8px;
+}
+.chart-bar-wrap {
+  flex: 1; height: 32px; background: var(--gray-100);
+  border-radius: var(--radius-full); overflow: hidden; position: relative;
+}
+.chart-bar {
+  height: 100%; border-radius: var(--radius-full);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex; align-items: center; justify-content: flex-end;
+  padding-right: 12px; color: var(--white); font-size: 0.8rem; font-weight: 600;
+  width: 0;
+}
+.chart-value { min-width: 80px; text-align: right; font-weight: 600; color: var(--navy); font-size: 0.9rem; }
+
+/* Chat */
+.chat-container {
+  display: flex; flex-direction: column; height: 600px;
+  background: var(--white); border-radius: var(--radius-xl);
+  overflow: hidden; box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(10, 22, 40, 0.05);
+}
+.chat-header {
+  padding: 20px 24px; background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  color: var(--white); display: flex; align-items: center; gap: 14px;
+}
+.chat-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--white);
+  box-shadow: 0 0 20px var(--teal-glow);
+}
+.chat-messages {
+  flex: 1; overflow-y: auto; padding: 24px;
+  display: flex; flex-direction: column; gap: 16px; background: var(--gray-100);
+}
+.chat-msg { max-width: 75%; padding: 14px 18px; border-radius: var(--radius-lg); font-size: 0.92rem; line-height: 1.6; animation: fadeInUp 0.3s ease; }
+.chat-msg.user {
+  align-self: flex-end; background: linear-gradient(135deg, var(--teal), var(--teal-light));
+  color: var(--white); border-bottom-right-radius: 4px;
+}
+.chat-msg.ai {
+  align-self: flex-start; background: var(--white); color: var(--gray-700);
+  border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm);
+}
+.chat-input-wrap {
+  padding: 16px 20px; background: var(--white);
+  border-top: 1px solid var(--gray-200); display: flex; gap: 12px;
+}
+.chat-input {
+  flex: 1; padding: 14px 18px; border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-full); background: var(--white);
+  color: var(--navy); transition: all var(--transition-fast);
+}
+.chat-input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 4px var(--teal-glow); }
+.chat-send {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--teal-light));
+  color: var(--white); display: flex; align-items: center;
+  justify-content: center; font-size: 1.1rem; transition: all var(--transition-fast);
+  cursor: pointer; flex-shrink: 0;
+}
+.chat-send:hover { transform: scale(1.08); box-shadow: 0 4px 16px rgba(13, 148, 136, 0.4); }
+.quick-prompts {
+  display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 20px;
+  background: var(--white); border-top: 1px solid var(--gray-100);
+}
+.quick-prompt {
+  padding: 8px 14px; background: var(--gray-100); border-radius: var(--radius-full);
+  font-size: 0.82rem; color: var(--gray-600); cursor: pointer;
+  transition: all var(--transition-fast); border: 1px solid transparent;
+}
+.quick-prompt:hover {
+  background: rgba(13, 148, 136, 0.08); color: var(--teal);
+  border-color: rgba(13, 148, 136, 0.2);
+}
+
+/* Page sections (SPA) */
+.page { display: none; animation: fadeIn 0.4s ease; }
+.page.active { display: block; }
+
+/* Planner */
+.planner-wrap { max-width: 800px; margin: 0 auto; }
+.planner-step { display: none; animation: fadeInUp 0.4s ease; }
+.planner-step.active { display: block; }
+.planner-step h2 { font-size: 1.75rem; margin-bottom: 8px; }
+.planner-step .step-desc { color: var(--gray-500); margin-bottom: 32px; }
+.planner-nav {
+  display: flex; justify-content: space-between; margin-top: 40px;
+  padding-top: 24px; border-top: 1px solid var(--gray-200);
+}
+
+/* Stat cards */
+.stat-card {
+  background: var(--white); border-radius: var(--radius-lg); padding: 24px;
+  box-shadow: var(--shadow-sm); border: 1px solid rgba(10, 22, 40, 0.05);
+  transition: all var(--transition);
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.stat-label { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 8px; font-weight: 500; }
+.stat-value { font-size: 1.75rem; font-weight: 700; color: var(--navy); font-family: var(--font-display); }
+.stat-change { font-size: 0.8rem; color: var(--success); margin-top: 4px; }
+
+/* Filters */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px;
+  padding: 16px; background: var(--white); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm); border: 1px solid rgba(10, 22, 40, 0.05);
+}
+.filter-select {
+  padding: 10px 16px; border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-md); background: var(--white);
+  color: var(--navy); font-size: 0.9rem; cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.filter-select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-glow); }
+
+/* Alert */
+.alert {
+  padding: 16px 20px; border-radius: var(--radius-md);
+  display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;
+  font-size: 0.92rem; line-height: 1.6;
+}
+.alert-warning { background: rgba(245, 158, 11, 0.1); border-left: 4px solid var(--warning); color: #92400e; }
+.alert-info { background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--info); color: #1e40af; }
+.alert-success { background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--success); color: #065f46; }
+.alert-error { background: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--danger); color: #991b1b; }
+
+/* Score ring */
+.score-ring {
+  width: 120px; height: 120px; border-radius: 50%;
+  background: conic-gradient(var(--teal) 0% 82%, var(--gray-200) 82% 100%);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.score-ring::before {
+  content: ''; position: absolute; inset: 12px;
+  border-radius: 50%; background: var(--white);
+}
+.score-value {
+  position: relative; font-family: var(--font-display);
+  font-size: 1.75rem; font-weight: 700; color: var(--navy);
+}
+
+/* Empty state */
+.empty-state { text-align: center; padding: 64px 24px; color: var(--gray-500); }
+.empty-state .icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.5; }
+
+/* Hero page (inner pages) */
+.page-hero {
+  padding: calc(var(--nav-height) + 64px) 0 64px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: var(--white); position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content: ''; position: absolute; top: -50%; right: -10%;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, var(--teal-glow), transparent 70%);
+}
+.page-hero h1 { color: var(--white); margin-bottom: 12px; }
+.page-hero p { color: rgba(255, 255, 255, 0.7); max-width: 600px; }
+
+/* Destination hero */
+.dest-hero {
+  position: relative; height: 60vh; min-height: 400px;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.dest-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.dest-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 22, 40, 0.85) 100%);
+}
+.dest-hero-content { position: relative; z-index: 2; padding: 48px 0; color: var(--white); }
+.dest-hero-content h1 { color: var(--white); font-size: clamp(2rem, 5vw, 3.5rem); }
+
+/* Tabs */
+.tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--gray-200); margin-bottom: 32px; overflow-x: auto; }
+.tab {
+  padding: 12px 24px; font-size: 0.95rem; font-weight: 500;
+  color: var(--gray-500); cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent; margin-bottom: -2px;
+  transition: all var(--transition-fast);
+}
+.tab:hover { color: var(--navy); }
+.tab.active { color: var(--teal); border-bottom-color: var(--teal); font-weight: 600; }
+
+/* Animations */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .search-grid { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  :root { --nav-height: 64px; }
+  .nav-links { display: none; }
+  .nav-actions .btn { display: none; }
+  .hamburger { display: flex; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .section { padding: 64px 0; }
+  .search-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero { min-height: auto; padding: calc(var(--nav-height) + 24px) 0 48px; }
+  .hero h1 { font-size: 2.75rem; }
+  .search-card { padding: 20px; margin-top: 32px; }
+  .timeline { padding-left: 32px; }
+  .timeline-dot { left: -32px; width: 26px; height: 26px; font-size: 0.6rem; }
+  .chat-container { height: 500px; }
+  .chart-label { min-width: 100px; font-size: 0.82rem; }
+  .toast-container { left: 16px; right: 16px; bottom: 16px; }
+  .toast { min-width: auto; width: 100%; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .modal { padding: 24px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .btn { padding: 12px 22px; font-size: 0.9rem; }
+  .btn-lg { padding: 14px 28px; font-size: 0.95rem; }
+  .card-body { padding: 16px; }
+  .stat-value { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loadingText">VOYORA AI is creating your perfect journey...</div>
+  <div class="loading-subtext" id="loadingSubtext">Analyzing your preferences and finding the best options</div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a class="nav-logo" onclick="navigate('home')" style="cursor:pointer">
+      <div class="nav-logo-mark">✦</div>
+      VOYORA
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" data-page="explore" onclick="navigate('explore')">Explore</a>
+      <a class="nav-link" data-page="planner" onclick="navigate('planner')">AI Planner</a>
+      <a class="nav-link" data-page="hotels" onclick="navigate('hotels')">Hotels</a>
+      <a class="nav-link" data-page="restaurants" onclick="navigate('restaurants')">Restaurants</a>
+      <a class="nav-link" data-page="gems" onclick="navigate('gems')">Hidden Gems</a>
+      <a class="nav-link" data-page="assistant" onclick="navigate('assistant')">AI Assistant</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="navigate('favorites')" aria-label="Favorites">
+        ❤️<span class="nav-badge" id="favBadge">0</span>
+      </button>
+      <button class="nav-icon-btn" onclick="navigate('trips')" aria-label="My Trips">🧳</button>
+      <button class="nav-icon-btn" onclick="navigate('login')" aria-label="Profile">👤</button>
+      <button class="btn btn-primary btn-sm" onclick="navigate('planner')">✨ Plan My Trip</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a class="nav-link" onclick="navigate('explore');toggleMobileMenu()">Explore</a>
+  <a class="nav-link" onclick="navigate('planner');toggleMobileMenu()">AI Planner</a>
+  <a class="nav-link" onclick="navigate('hotels');toggleMobileMenu()">Hotels</a>
+  <a class="nav-link" onclick="navigate('restaurants');toggleMobileMenu()">Restaurants</a>
+  <a class="nav-link" onclick="navigate('gems');toggleMobileMenu()">Hidden Gems</a>
+  <a class="nav-link" onclick="navigate('budget');toggleMobileMenu()">Budget</a>
+  <a class="nav-link" onclick="navigate('assistant');toggleMobileMenu()">AI Assistant</a>
+  <a class="nav-link" onclick="navigate('trips');toggleMobileMenu()">My Trips</a>
+  <a class="nav-link" onclick="navigate('favorites');toggleMobileMenu()">Favorites</a>
+  <a class="nav-link" onclick="navigate('login');toggleMobileMenu()">Login</a>
+  <a class="nav-link" onclick="navigate('business');toggleMobileMenu()">Business Dashboard</a>
+  <button class="btn btn-primary btn-block" style="margin-top:12px" onclick="navigate('planner');toggleMobileMenu()">✨ Plan My Trip</button>
+</div>
+
+<!-- ============ HOME PAGE ============ -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?w=1920&q=80" alt="Beautiful travel destination with mountains and lake">
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span> AI-Powered Travel Intelligence</div>
+        <h1>VOYORA<span class="accent">.</span></h1>
+        <div class="hero-tagline">"Your World, Your Way."</div>
+        <p class="hero-desc">AI-powered travel planning that turns your preferences, budget and time into a journey made for you.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary btn-lg" onclick="navigate('planner')">✨ Plan My Trip</button>
+          <button class="btn btn-secondary btn-lg" onclick="navigate('explore')">Explore Destinations</button>
+        </div>
+      </div>
+      <div class="search-card">
+        <h3>🔍 Where do you want to go?</h3>
+        <div class="search-grid">
+          <div class="search-field">
+            <label>Destination</label>
+            <input type="text" id="heroDest" placeholder="Mumbai, Goa, Kashmir...">
+          </div>
+          <div class="search-field">
+            <label>Dates</label>
+            <input type="date" id="heroDate">
+          </div>
+          <div class="search-field">
+            <label>Travelers</label>
+            <select id="heroTravelers">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4+</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label>Budget</label>
+            <select id="heroBudget">
+              <option value="10000">₹10,000</option>
+              <option value="25000" selected>₹25,000</option>
+              <option value="50000">₹50,000</option>
+              <option value="100000">₹1,00,000+</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="startHeroSearch()">Create My Trip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popular Destinations -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">Popular Destinations</div>
+        <h2 class="section-title">Where will you go next?</h2>
+        <p class="section-subtitle">Handpicked destinations loved by our community — powered by real traveler insights.</p>
+      </div>
+      <div class="grid grid-3" id="popularDestinations"></div>
+    </div>
+  </section>
+
+  <!-- How VOYORA Works -->
+  <section class="section" style="background:var(--white)">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">How It Works</div>
+        <h2 class="section-title">Travel planning, reimagined.</h2>
+        <p class="section-subtitle">Three simple steps to a perfectly personalized journey.</p>
+      </div>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Tell Us Your Travel Style</h3>
+          <p>Choose your destination, budget, dates and interests. The more we know, the better your trip.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>VOYORA Plans Your Journey</h3>
+          <p>Our AI creates your personalized itinerary with activities, hotels, food and hidden gems.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Travel Your Way</h3>
+          <p>Discover hotels, restaurants, activities and lesser-known places — all within your budget.</p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:48px">
+        <button class="btn btn-gold btn-lg" onclick="navigate('planner')">✨ Start Planning Free</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features strip -->
+  <section class="section" style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:white">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow" style="color:var(--teal-light)">The VOYORA Difference</div>
+        <h2 class="section-title" style="color:white">Smart travel, made personal.</h2>
+        <p class="section-subtitle" style="color:rgba(255,255,255,0.7)">Every feature built around you — not around templates.</p>
+      </div>
+      <div class="grid grid-3" style="gap:24px">
+        <div class="step-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)">
+          <div style="font-size:2rem;margin-bottom:12px">🧠</div>
+          <h3 style="color:white">AI Personalization</h3>
+          <p style="color:rgba(255,255,255,0.65)">Recommendations based on your interests, not generic lists.</p>
+        </div>
+        <div class="step-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)">
+          <div style="font-size:2rem;margin-bottom:12px">💰</div>
+          <h3 style="color:white">Budget Optimizer</h3>
+          <p style="color:rgba(255,255,255,0.65)">Get the most from every rupee with smart cost-saving suggestions.</p>
+        </div>
+        <div class="step-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)">
+          <div style="font-size:2rem;margin-bottom:12px">🌱</div>
+          <h3 style="color:white">Sustainable Travel</h3>
+          <p style="color:rgba(255,255,255,0.65)">Support local businesses and reduce your carbon footprint.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ EXPLORE PAGE ============ -->
+<section class="page" id="page-explore">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">Explore the World with VOYORA</h1>
+      <p>Discover destinations curated by AI, loved by travelers, and tailored to you.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <input type="text" class="filter-select" style="flex:1;min-width:200px" id="exploreSearch" placeholder="🔍 Search destinations..." oninput="filterExplore()">
+        <select class="filter-select" id="exploreCategory" onchange="filterExplore()">
+          <option value="all">All Categories</option>
+          <option value="Trending">Trending</option>
+          <option value="Popular">Popular</option>
+          <option value="Budget Friendly">Budget Friendly</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Nature">Nature</option>
+          <option value="Culture">Culture</option>
+        </select>
+      </div>
+      <div class="grid grid-3" id="exploreGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANNER PAGE ============ -->
+<section class="page" id="page-planner">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">✨ AI Trip Planner</h1>
+      <p>Answer a few questions and let VOYORA AI craft your perfect journey.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="planner-wrap">
+        <div class="progress-bar">
+          <div class="progress-step active" data-step="1"></div>
+          <div class="progress-step" data-step="2"></div>
+          <div class="progress-step" data-step="3"></div>
+          <div class="progress-step" data-step="4"></div>
+          <div class="progress-step" data-step="5"></div>
+          <div class="progress-step" data-step="6"></div>
+          <div class="progress-step" data-step="7"></div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="planner-step active" data-step="1">
+          <h2>Where are you going?</h2>
+          <p class="step-desc">Pick a destination or type your own.</p>
+          <div class="form-group">
+            <label for="planDest">Destination</label>
+            <input type="text" id="planDest" placeholder="e.g. Goa, Mumbai, Kashmir" list="destList">
+            <datalist id="destList"></datalist>
+            <div class="form-error" id="err-dest">Please enter a destination.</div>
+          </div>
+          <div class="chips" id="destChips"></div>
+          <div class="planner-nav">
+            <span></span>
+            <button class="btn btn-primary" onclick="plannerNext(1)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="planner-step" data-step="2">
+          <h2>When are you travelling?</h2>
+          <p class="step-desc">Select your travel dates.</p>
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="planStart">Start Date</label>
+              <input type="date" id="planStart">
+              <div class="form-error" id="err-start">Please select a start date.</div>
+            </div>
+            <div class="form-group">
+              <label for="planEnd">End Date</label>
+              <input type="date" id="planEnd">
+              <div class="form-error" id="err-end">Please select an end date.</div>
+            </div>
+          </div>
+          <div class="planner-nav">
+            <button class="btn btn-secondary" onclick="plannerPrev(2)">← Back</button>
+            <button class="btn btn-primary" onclick="plannerNext(2)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="planner-step" data-step="3">
+          <h2>Who is travelling?</h2>
+          <p class="step-desc">Tell us about your travel group.</p>
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="planAdults">Adults (12+)</label>
+              <input type="number" id="planAdults" value="2" min="1" max="20">
+            </div>
+            <div class="form-group">
+              <label for="planChildren">Children (0-11)</label>
+              <input type="number" id="planChildren" value="0" min="0" max="10">
+            </div>
+          </div>
+          <div class="planner-nav">
+            <button class="btn btn-secondary" onclick="plannerPrev(3)">← Back</button>
+            <button class="btn btn-primary" onclick="plannerNext(3)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="planner-step" data-step="4">
+          <h2>What's your budget?</h2>
+          <p class="step-desc">Select a range or enter a custom amount (₹).</p>
+          <div class="chips" id="budgetChips">
+            <div class="chip" data-budget="5000">₹5,000</div>
+            <div class="chip" data-budget="10000">₹10,000</div>
+            <div class="chip selected" data-budget="25000">₹25,000</div>
+            <div class="chip" data-budget="50000">₹50,000</div>
+            <div class="chip" data-budget="100000">₹1,00,000+</div>
+          </div>
+          <div class="form-group" style="margin-top:20px">
+            <label for="planCustomBudget">Or enter custom budget (₹)</label>
+            <input type="number" id="planCustomBudget" placeholder="e.g. 35000" min="1000">
+          </div>
+          <div class="planner-nav">
+            <button class="btn btn-secondary" onclick="plannerPrev(4)">← Back</button>
+            <button class="btn btn-primary" onclick="plannerNext(4)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="planner-step" data-step="5">
+          <h2>What do you love?</h2>
+          <p class="step-desc">Select all that apply.</p>
+          <div class="chips" id="interestChips">
+            <div class="chip" data-interest="Adventure">Adventure</div>
+            <div class="chip" data-interest="Beaches">Beaches</div>
+            <div class="chip" data-interest="Nature">Nature</div>
+            <div class="chip" data-interest="Food">Food</div>
+            <div class="chip" data-interest="Shopping">Shopping</div>
+            <div class="chip" data-interest="History">History</div>
+            <div class="chip" data-interest="Culture">Culture</div>
+            <div class="chip" data-interest="Nightlife">Nightlife</div>
+            <div class="chip" data-interest="Photography">Photography</div>
+            <div class="chip" data-interest="Luxury">Luxury</div>
+            <div class="chip" data-interest="Spiritual">Spiritual</div>
+            <div class="chip" data-interest="Wildlife">Wildlife</div>
+          </div>
+          <div class="form-error" id="err-interests" style="margin-top:12px">Please select at least one interest.</div>
+          <div class="planner-nav">
+            <button class="btn btn-secondary" onclick="plannerPrev(5)">← Back</button>
+            <button class="btn btn-primary" onclick="plannerNext(5)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="planner-step" data-step="6">
+          <h2>Travel style</h2>
+          <p class="step-desc">How do you like to travel?</p>
+          <div class="chips" id="styleChips">
+            <div class="chip" data-style="Budget">Budget</div>
+            <div class="chip selected" data-style="Balanced">Balanced</div>
+            <div class="chip" data-style="Luxury">Luxury</div>
+            <div class="chip" data-style="Backpacker">Backpacker</div>
+            <div class="chip" data-style="Family">Family</div>
+            <div class="chip" data-style="Solo">Solo</div>
+            <div class="chip" data-style="Couple">Couple</div>
+          </div>
+          <div class="planner-nav">
+            <button class="btn btn-secondary" onclick="plannerPrev(6)">← Back</button>
+            <button class="btn btn-primary" onclick="plannerNext(6)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="planner-step" data-step="7">
+          <h2>Accommodation</h2>
+          <p class="step-desc">What kind of stay do you prefer?</p>
+          <div class="chips" id="accChips">
+            <div class="chip" data-acc="Budget Hotel">Budget Hotel</div>
+            <div class="chip selected" data-acc="Hotel">Hotel</div>
+            <div class="chip" data-acc="Resort">Resort</div>
+            <div class="chip" data-acc="Luxury">Luxury</div>
+            <div class="chip" data-acc="Homestay">Homestay</div>
+          </div>
+          <div class="planner-nav">
+            <button class="btn btn-secondary" onclick="plannerPrev(7)">← Back</button>
+            <button class="btn btn-gold" onclick="generateTrip()">✨ Generate My VOYORA Trip</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ITINERARY PAGE ============ -->
+<section class="page" id="page-itinerary">
+  <div class="page-hero">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--teal-light)">Your AI-Generated Journey</div>
+      <h1 class="display-3" id="itinTitle">Your Itinerary</h1>
+      <p id="itinSubtitle">Crafted by VOYORA AI based on your preferences.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <!-- Trip summary -->
+      <div class="grid grid-4" id="itinSummary" style="margin-bottom:48px"></div>
+
+      <!-- AI Smart Update -->
+      <div id="smartUpdateBox" style="margin-bottom:32px"></div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab active" onclick="switchItinTab('itinerary', this)">📅 Itinerary</div>
+        <div class="tab" onclick="switchItinTab('costs', this)">💰 Cost Breakdown</div>
+        <div class="tab" onclick="switchItinTab('sustainable', this)">🌱 Sustainability</div>
+      </div>
+
+      <!-- Itinerary tab -->
+      <div id="itinTab-itinerary">
+        <div id="itineraryDays"></div>
+      </div>
+
+      <!-- Costs tab -->
+      <div id="itinTab-costs" class="hidden">
+        <div class="grid grid-2" style="gap:32px;align-items:start">
+          <div class="card" style="padding:32px">
+            <h3 style="margin-bottom:20px">Total Estimated Cost</h3>
+            <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--navy)" id="totalCost">₹0</div>
+            <p class="text-muted" style="margin-top:8px" id="costPerPerson">per person</p>
+            <button class="btn btn-primary btn-block" style="margin-top:24px" onclick="navigate('budget')">✨ Optimize My Budget</button>
+          </div>
+          <div class="card" style="padding:32px">
+            <h3 style="margin-bottom:24px">Category Breakdown</h3>
+            <div class="chart-bar-container" id="costChart"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sustainability tab -->
+      <div id="itinTab-sustainable" class="hidden">
+        <div class="grid grid-2" style="gap:32px;align-items:start">
+          <div class="card" style="padding:32px;text-align:center">
+            <div class="eyebrow" style="justify-content:center">Sustainability Score</div>
+            <div class="flex-center" style="margin:20px 0">
+              <div class="score-ring"><div class="score-value" id="sustainScore">82</div></div>
+            </div>
+            <p class="text-muted">Your trip is more sustainable than 78% of similar journeys.</p>
+          </div>
+          <div class="card" style="padding:32px">
+            <h3 style="margin-bottom:16px">🌱 Your Impact</h3>
+            <div class="grid grid-2" style="gap:16px">
+              <div class="stat-card"><div class="stat-label">CO₂ Saved</div><div class="stat-value">~18 kg</div></div>
+              <div class="stat-card"><div class="stat-label">Walking Distance</div><div class="stat-value">12 km</div></div>
+              <div class="stat-card"><div class="stat-label">Local Businesses</div><div class="stat-value">7</div></div>
+              <div class="stat-card"><div class="stat-label">Public Transport</div><div class="stat-value">4 rides</div></div>
+            </div>
+            <p class="text-muted" style="margin-top:16px;font-size:0.82rem">* All environmental figures are estimates.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top:48px">
+        <button class="btn btn-secondary" onclick="navigate('hotels')">View Hotels</button>
+        <button class="btn btn-secondary" onclick="navigate('restaurants')">View Restaurants</button>
+        <button class="btn btn-primary" onclick="saveCurrentTrip()">💾 Save Trip</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOTELS PAGE ============ -->
+<section class="page" id="page-hotels">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">Smart Hotel Recommendations</h1>
+      <p>AI-curated stays that fit your budget, style and itinerary.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <select class="filter-select" id="hotelPrice" onchange="filterHotels()">
+          <option value="all">Any Price</option>
+          <option value="2000">Under ₹2,000</option>
+          <option value="5000">Under ₹5,000</option>
+          <option value="10000">Under ₹10,000</option>
+        </select>
+        <select class="filter-select" id="hotelRating" onchange="filterHotels()">
+          <option value="all">Any Rating</option>
+          <option value="4">4★ & above</option>
+          <option value="4.5">4.5★ & above</option>
+        </select>
+        <select class="filter-select" id="hotelType" onchange="filterHotels()">
+          <option value="all">All Types</option>
+          <option value="Budget Hotel">Budget Hotel</option>
+          <option value="Hotel">Hotel</option>
+          <option value="Resort">Resort</option>
+          <option value="Luxury">Luxury</option>
+          <option value="Homestay">Homestay</option>
+        </select>
+      </div>
+      <div class="grid grid-3" id="hotelsGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESTAURANTS PAGE ============ -->
+<section class="page" id="page-restaurants">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">Taste the Destination</h1>
+      <p>Restaurants picked by AI based on your food preferences and location.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <select class="filter-select" id="restCuisine" onchange="filterRestaurants()">
+          <option value="all">All Cuisines</option>
+          <option value="Indian">Indian</option>
+          <option value="Chinese">Chinese</option>
+          <option value="Italian">Italian</option>
+          <option value="Street Food">Street Food</option>
+          <option value="Cafe">Cafe</option>
+          <option value="Desserts">Desserts</option>
+          <option value="Vegetarian">Vegetarian</option>
+        </select>
+      </div>
+      <div class="grid grid-3" id="restaurantsGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIDDEN GEMS PAGE ============ -->
+<section class="page" id="page-gems">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">Discover Beyond the Tourist Map</h1>
+      <p>Lesser-known attractions, local cafes, cultural experiences and unique activities.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="grid grid-3" id="gemsGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUDGET PAGE ============ -->
+<section class="page" id="page-budget">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">💰 AI Budget Optimizer</h1>
+      <p>Maximize every rupee with AI-powered cost optimization.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="grid grid-3" style="margin-bottom:40px">
+        <div class="stat-card">
+          <div class="stat-label">Total Budget</div>
+          <div class="stat-value" id="bTotalBudget">₹25,000</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Estimated Cost</div>
+          <div class="stat-value" id="bEstCost">₹0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Remaining</div>
+          <div class="stat-value" id="bRemaining" style="color:var(--success)">₹0</div>
+        </div>
+      </div>
+
+      <div id="budgetAlertBox"></div>
+
+      <div class="card" style="padding:32px;margin-bottom:32px">
+        <h3 style="margin-bottom:24px">Category Breakdown</h3>
+        <div class="chart-bar-container" id="budgetChart"></div>
+      </div>
+
+      <div class="text-center" style="margin-bottom:32px">
+        <button class="btn btn-gold btn-lg" onclick="optimizeBudget()">✨ Optimize My Budget</button>
+      </div>
+
+      <div id="aiSuggestionsBox"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSISTANT PAGE ============ -->
+<section class="page" id="page-assistant">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">VOYORA AI</h1>
+      <p>Your multilingual travel assistant — ask anything, anytime.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container" style="max-width:800px">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-avatar">✦</div>
+          <div>
+            <div style="font-weight:600">VOYORA AI</div>
+            <div style="font-size:0.8rem;opacity:0.7">● Online · English · हिन्दी · मराठी</div>
+          </div>
+          <div style="margin-left:auto">
+            <select class="filter-select" id="langSelect" style="background:rgba(255,255,255,0.1);color:white;border-color:rgba(255,255,255,0.2)">
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+            </select>
+          </div>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="quick-prompts" id="quickPrompts">
+          <div class="quick-prompt" onclick="sendQuick('What\'s nearby?')">What's nearby?</div>
+          <div class="quick-prompt" onclick="sendQuick('Make my trip cheaper')">Make my trip cheaper</div>
+          <div class="quick-prompt" onclick="sendQuick('Best food nearby')">Best food nearby</div>
+          <div class="quick-prompt" onclick="sendQuick('What should I visit today?')">What should I visit today?</div>
+          <div class="quick-prompt" onclick="sendQuick('Find hidden gems')">Find hidden gems</div>
+        </div>
+        <div class="chat-input-wrap">
+          <input class="chat-input" id="chatInput" placeholder="Ask VOYORA AI anything..." onkeypress="if(event.key==='Enter')sendChat()">
+          <button class="chat-send" onclick="sendChat()">➤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MY TRIPS PAGE ============ -->
+<section class="page" id="page-trips">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">My Trips</h1>
+      <p>All your journeys in one place.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <h3 style="margin-bottom:20px">Upcoming Trips</h3>
+      <div class="grid grid-3" id="upcomingTrips" style="margin-bottom:48px"></div>
+      <h3 style="margin-bottom:20px">Saved Itineraries</h3>
+      <div class="grid grid-3" id="savedTrips"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAVORITES PAGE ============ -->
+<section class="page" id="page-favorites">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">❤️ Favorites</h1>
+      <p>Everything you've saved, in one place.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="grid grid-3" id="favoritesGrid"></div>
+      <div class="empty-state hidden" id="favEmpty">
+        <div class="icon">💔</div>
+        <h3>No favorites yet</h3>
+        <p>Start exploring and tap the heart icon to save your favorites.</p>
+        <button class="btn btn-primary" style="margin-top:16px" onclick="navigate('explore')">Explore Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGIN PAGE ============ -->
+<section class="page" id="page-login">
+  <div class="section" style="padding-top:calc(var(--nav-height) + 64px)">
+    <div class="container" style="max-width:440px">
+      <div class="card" style="padding:40px">
+        <div class="text-center" style="margin-bottom:32px">
+          <div class="nav-logo" style="justify-content:center;margin-bottom:12px">
+            <div class="nav-logo-mark">✦</div>VOYORA
+          </div>
+          <h2 style="font-size:1.5rem">Welcome back</h2>
+          <p class="text-muted" style="font-size:0.9rem">Sign in to continue your journey</p>
+        </div>
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••">
+        </div>
+        <div class="form-group">
+          <label for="loginType">Account Type</label>
+          <select id="loginType">
+            <option value="tourist">Tourist</option>
+            <option value="business">Business</option>
+          </select>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="doLogin()">Sign In</button>
+        <p class="text-center text-muted" style="margin-top:20px;font-size:0.9rem">
+          Don't have an account? <a onclick="navigate('signup')" style="color:var(--teal);font-weight:600;cursor:pointer">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNUP PAGE ============ -->
+<section class="page" id="page-signup">
+  <div class="section" style="padding-top:calc(var(--nav-height) + 64px)">
+    <div class="container" style="max-width:440px">
+      <div class="card" style="padding:40px">
+        <div class="text-center" style="margin-bottom:32px">
+          <div class="nav-logo" style="justify-content:center;margin-bottom:12px">
+            <div class="nav-logo-mark">✦</div>VOYORA
+          </div>
+          <h2 style="font-size:1.5rem">Create your account</h2>
+          <p class="text-muted" style="font-size:0.9rem">Start your personalized journey</p>
+        </div>
+        <div class="form-group">
+          <label for="signupName">Full Name</label>
+          <input type="text" id="signupName" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="signupPass">Password</label>
+          <input type="password" id="signupPass" placeholder="••••••••">
+        </div>
+        <div class="form-group">
+          <label for="signupType">I am a</label>
+          <select id="signupType">
+            <option value="tourist">Tourist</option>
+            <option value="business">Business Owner</option>
+          </select>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="doSignup()">Create Account</button>
+        <p class="text-center text-muted" style="margin-top:20px;font-size:0.9rem">
+          Already have an account? <a onclick="navigate('login')" style="color:var(--teal);font-weight:600;cursor:pointer">Sign in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUSINESS DASHBOARD ============ -->
+<section class="page" id="page-business">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="display-3">Business Dashboard</h1>
+      <p>Manage your listings, bookings, offers and analytics.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="grid grid-4" style="margin-bottom:40px">
+        <div class="stat-card">
+          <div class="stat-label">Views</div>
+          <div class="stat-value">12,480</div>
+          <div class="stat-change">▲ 18% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Bookings</div>
+          <div class="stat-value">342</div>
+          <div class="stat-change">▲ 12% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Favorites</div>
+          <div class="stat-value">1,205</div>
+          <div class="stat-change">▲ 9% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Revenue</div>
+          <div class="stat-value">₹4.2L</div>
+          <div class="stat-change">▲ 22% this month</div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" onclick="switchBizTab('overview', this)">Overview</div>
+        <div class="tab" onclick="switchBizTab('listings', this)">My Listings</div>
+        <div class="tab" onclick="switchBizTab('offers', this)">Offers</div>
+      </div>
+
+      <div id="bizTab-overview">
+        <div class="grid grid-2" style="gap:24px">
+          <div class="card" style="padding:28px">
+            <h3 style="margin-bottom:16px">📈 Booking Trend</h3>
+            <div class="chart-bar-container">
+              <div class="chart-row"><div class="chart-label">Mon</div><div class="chart-bar-wrap"><div class="chart-bar" style="width:60%;background:linear-gradient(90deg,var(--teal),var(--teal-light))"></div></div><div class="chart-value">24</div></div>
+              <div class="chart-row"><div class="chart-label">Tue</div><div class="chart-bar-wrap"><div class="chart-bar" style="width:80%;background:linear-gradient(90deg,var(--teal),var(--teal-light))"></div></div><div class="chart-value">32</div></div>
+              <div class="chart-row"><div class="chart-label">Wed</div><div class="chart-bar-wrap"><div class="chart-bar" style="width:45%;background:linear-gradient(90deg,var(--teal),var(--teal-light))"></div></div><div class="chart-value">18</div></div>
+              <div class="chart-row"><div class="chart-label">Thu</div><div class="chart-bar-wrap"><div class="chart-bar" style="width:90%;background:linear-gradient(90deg,var(--teal),var(--teal-light))"></div></div><div class="chart-value">36</div></div>
+              <div class="chart-row"><div class="chart-label">Fri</div><div class="chart-bar-wrap"><div class="chart-bar" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><div class="chart-value">42</div></div>
+            </div>
+          </div>
+          <div class="card" style="padding:28px">
+            <h3 style="margin-bottom:16px">🎯 Quick Actions</h3>
+            <div class="flex-col gap-12">
+              <button class="btn btn-primary btn-block" onclick="showToast('Hotel listing form opened','success')">➕ Add Hotel</button>
+              <button class="btn btn-secondary btn-block" onclick="showToast('Restaurant listing form opened','success')">🍽 Add Restaurant</button>
+              <button class="btn btn-secondary btn-block" onclick="showToast('Activity listing form opened','success')">🎟 Add Activity</button>
+              <button class="btn btn-gold btn-block" onclick="showToast('Offer creation opened','success')">🎁 Create Offer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="bizTab-listings" class="hidden">
+        <div class="grid grid-2" style="gap:20px">
+          <div class="card" style="padding:20px">
+            <div class="flex-between">
+              <div>
+                <h4 style="font-family:var(--font-body);font-size:1rem">Ocean View Resort</h4>
+                <p class="text-muted" style="font-size:0.85rem">Hotel · Goa · ₹8,500/night</p>
+              </div>
+              <span class="card-badge" style="position:static;background:rgba(16,185,129,0.15);color:var(--success)">Active</span>
+            </div>
+          </div>
+          <div class="card" style="padding:20px">
+            <div class="flex-between">
+              <div>
+                <h4 style="font-family:var(--font-body);font-size:1rem">Spice Route Restaurant</h4>
+                <p class="text-muted" style="font-size:0.85rem">Restaurant · Goa · ₹800 for two</p>
+              </div>
+              <span class="card-badge" style="position:static;background:rgba(16,185,129,0.15);color:var(--success)">Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="bizTab-offers" class="hidden">
+        <div class="card" style="padding:28px">
+          <div class="flex-between" style="margin-bottom:20px">
+            <h3>Active Offers</h3>
+            <button class="btn btn-primary btn-sm" onclick="showToast('Offer creation opened','success')">+ New Offer</button>
+          </div>
+          <div class="alert alert-success">🎁 20% OFF on weekend stays — valid till 30 Nov</div>
+          <div class="alert alert-info">🍽 Free dessert on orders above ₹1,500</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTINATION PAGE (dynamic) ============ -->
+<section class="page" id="page-destination">
+  <div class="dest-hero">
+    <img id="destHeroImg" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=1920&q=80" alt="Destination">
+    <div class="container">
+      <div class="dest-hero-content">
+        <h1 id="destHeroName">Goa</h1>
+        <p id="destHeroDesc" style="max-width:600px">Sun, sand and soul.</p>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="grid grid-4" id="destStats" style="margin-bottom:48px"></div>
+      <div class="flex-between" style="margin-bottom:24px;flex-wrap:wrap;gap:12px">
+        <h2 class="display-3">Top Attractions</h2>
+        <button class="btn btn-primary" onclick="navigate('planner')">✨ Plan a Trip Here</button>
+      </div>
+      <div class="grid grid-3" id="destAttractions"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo"><div class="nav-logo-mark">✦</div>VOYORA</div>
+        <p>AI-powered travel planning that turns your preferences, budget and time into a journey made for you.</p>
+        <p style="margin-top:12px;font-family:var(--font-display);font-style:italic;color:var(--gold-light)">"Your World, Your Way."</p>
+      </div>
+      <div>
+        <h4>Discover</h4>
+        <div class="footer-links">
+          <a onclick="navigate('explore')">Explore</a>
+          <a onclick="navigate('hotels')">Hotels</a>
+          <a onclick="navigate('restaurants')">Restaurants</a>
+          <a onclick="navigate('gems')">Hidden Gems</a>
+        </div>
+      </div>
+      <div>
+        <h4>Plan</h4>You
+        <div class="footer-links">
+          <a onclick="navigate('planner')">AI Planner</a>
+          <a onclick="navigate('budget')">Budget Optimizer</a>
+          <a onclick="navigate('assistant')">AI Assistant</a>
+          <a onclick="navigate('trips')">My Trips</a>
+        </div>
+      </div>
+      <div>
+        <h4>Business</h4>
+        <div class="footer-links">
+          <a onclick="navigate('business')">Dashboard</a>
+          <a onclick="navigate('signup')">List Your Business</a>
+          <a onclick="navigate('login')">Partner Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 VOYORA · Built for You  · Made with ❤️ in India</div>
+      <div class="footer-social">
+        <a href="#" aria-label="Twitter">𝕏</a>
+        <a href="#" aria-label="Instagram">◉</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================
+   VOYORA — Complete Single-File JavaScript
+   ============================================ */
+
+/* ---------- Demo Data ---------- */
+const DESTINATIONS = {
+  mumbai: {
+    name: 'Mumbai', tagline: 'The City of Dreams',
+    desc: 'Where Bollywood glamour meets colonial history and street food heaven.',
+    budget: 15000, bestTime: 'Oct – Mar', rating: 4.6, category: 'Trending',
+    img: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80',
+    attractions: [
+      { name: 'Gateway of India', desc: 'Iconic arch overlooking the Arabian Sea.', cost: 0, img: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600&q=80' },
+      { name: 'Marine Drive', desc: 'Queen\'s Necklace — perfect evening stroll.', cost: 0, img: 'https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=600&q=80' },
+      { name: 'Elephanta Caves', desc: 'Ancient rock-cut temples on an island.', cost: 600, img: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80' }
+    ]
+  },
+  goa: {
+    name: 'Goa', tagline: 'Sun, Sand and Soul',
+    desc: 'Beaches, Portuguese churches, vibrant nightlife and seafood delights.',
+    budget: 18000, bestTime: 'Nov – Feb', rating: 4.8, category: 'Popular',
+    img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&q=80',
+    attractions: [
+      { name: 'Palolem Beach', desc: 'Crescent-shaped beach with calm waters.', cost: 0, img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80' },
+      { name: 'Basilica of Bom Jesus', desc: 'UNESCO World Heritage baroque church.', cost: 0, img: 'https://images.unsplash.com/photo-1582972236019-e4c4b3c3d4e2?w=600&q=80' },
+      { name: 'Dudhsagar Falls', desc: 'Majestic four-tiered waterfall.', cost: 400, img: 'https://images.unsplash.com/photo-1580881647059-923632b8fd75?w=600&q=80' }
+    ]
+  },
+  kashmir: {
+    name: 'Kashmir', tagline: 'Paradise on Earth',
+    desc: 'Snow-capped mountains, shikara rides and the world\'s finest saffron.',
+    budget: 25000, bestTime: 'Mar – Oct', rating: 4.9, category: 'Nature',
+    img: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?w=800&q=80',
+    attractions: [
+      { name: 'Dal Lake', desc: 'Houseboats and shikara rides at sunrise.', cost: 800, img: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?w=600&q=80' },
+      { name: 'Gulmarg', desc: 'World-class skiing and gondola rides.', cost: 1200, img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80' },
+      { name: 'Mughal Gardens', desc: 'Terraced gardens with Himalayan views.', cost: 200, img: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600&q=80' }
+    ]
+  },
+  rajasthan: {
+    name: 'Rajasthan', tagline: 'Land of Kings',
+    desc: 'Royal palaces, desert safaris and vibrant folk culture.',
+    budget: 22000, bestTime: 'Oct – Mar', rating: 4.7, category: 'Culture',
+    img: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80',
+    attractions: [
+      { name: 'Amber Fort', desc: 'Majestic hilltop fort with mirror palace.', cost: 500, img: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80' },
+      { name: 'Hawa Mahal', desc: 'Palace of Winds — iconic pink facade.', cost: 200, img: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80' },
+      { name: 'Jaisalmer Desert', desc: 'Golden sand dunes and camel safaris.', cost: 1500, img: 'https://images.unsplash.com/photo-1609920658906-8223bd289001?w=600&q=80' }
+    ]
+  },
+  kerala: {
+    name: 'Kerala', tagline: 'God\'s Own Country',
+    desc: 'Backwaters, Ayurveda, spice plantations and tranquil beaches.',
+    budget: 20000, bestTime: 'Sep – Mar', rating: 4.8, category: 'Nature',
+    img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80',
+    attractions: [
+      { name: 'Alleppey Backwaters', desc: 'Overnight houseboat through palm-lined canals.', cost: 3000, img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80' },
+      { name: 'Munnar Tea Gardens', desc: 'Rolling hills carpeted with tea plantations.', cost: 300, img: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80' },
+      { name: 'Fort Kochi', desc: 'Colonial charm, Chinese nets and cafes.', cost: 0, img: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=600&q=80' }
+    ]
+  },
+  bengaluru: {
+    name: 'Bengaluru', tagline: 'The Garden City',
+    desc: 'Tech hub by day, craft brewery capital by night — with lush parks in between.',
+    budget: 14000, bestTime: 'Oct – Feb', rating: 4.5, category: 'Trending',
+    img: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=800&q=80',
+    attractions: [
+      { name: 'Lalbagh Botanical Garden', desc: '240-acre garden with glasshouse.', cost: 50, img: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80' },
+      { name: 'Bangalore Palace', desc: 'Tudor-style palace with wooden interiors.', cost: 250, img: 'https://images.unsplash.com/photo-1600100397608-f010d0a1f0e5?w=600&q=80' },
+      { name: 'Cubbon Park', desc: 'Green lung of the city, perfect for walks.', cost: 0, img: 'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=600&q=80' }
+    ]
+  }
+};
+
+const HOTELS = [
+  { name: 'Ocean View Resort', city: 'Goa', rating: 4.7, price: 8500, distance: '1.2 km from beach', type: 'Resort', amenities: ['Pool', 'Spa', 'Free WiFi', 'Breakfast'], img: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80', aiPick: 'Fits your budget and is close to most attractions in your itinerary.' },
+  { name: 'The Taj Palace', city: 'Mumbai', rating: 4.9, price: 15000, distance: '0.5 km from Gateway', type: 'Luxury', amenities: ['Sea View', 'Fine Dining', 'Spa', 'Butler'], img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80', aiPick: 'Top-rated luxury option with iconic views.' },
+  { name: 'Backwater Homestay', city: 'Kerala', rating: 4.6, price: 3200, distance: 'On backwaters', type: 'Homestay', amenities: ['Home food', 'Canoe', 'Garden'], img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80', aiPick: 'Authentic local experience at a great price.' },
+  { name: 'Snow Peak Lodge', city: 'Kashmir', rating: 4.5, price: 5500, distance: 'Near Gulmarg', type: 'Hotel', amenities: ['Fireplace', 'Mountain View', 'Heating'], img: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80', aiPick: 'Cozy stay with stunning Himalayan views.' },
+  { name: 'Desert Camp Jaisalmer', city: 'Rajasthan', rating: 4.4, price: 4500, distance: 'In dunes', type: 'Resort', amenities: ['Camel Safari', 'Folk Dance', 'Dinner'], img: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80', aiPick: 'Unique desert experience under the stars.' },
+  { name: 'Garden City Inn', city: 'Bengaluru', rating: 4.3, price: 2800, distance: '2 km from center', type: 'Budget Hotel', amenities: ['WiFi', 'Breakfast', 'Parking'], img: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80', aiPick: 'Great value for money in the heart of the city.' },
+  { name: 'Beach Breeze Hotel', city: 'Goa', rating: 4.2, price: 3800, distance: '200 m from beach', type: 'Hotel', amenities: ['Pool', 'Bar', 'WiFi'], img: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80', aiPick: 'Budget-friendly option steps from the sand.' },
+  { name: 'Heritage Haveli', city: 'Rajasthan', rating: 4.8, price: 7200, distance: 'Old city', type: 'Hotel', amenities: ['Heritage', 'Rooftop', 'Cultural show'], img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80', aiPick: 'Live like royalty in a restored haveli.' }
+];
+
+const RESTAURANTS = [
+  { name: 'Spice Route', cuisine: 'Indian', rating: 4.7, price: '₹800 for two', distance: '1 km', img: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80', aiPick: 'Matches your love for authentic Indian flavors.' },
+  { name: 'Wok & Roll', cuisine: 'Chinese', rating: 4.5, price: '₹600 for two', distance: '2 km', img: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=600&q=80', aiPick: 'Highly rated for its dim sum and noodles.' },
+  { name: 'Bella Italia', cuisine: 'Italian', rating: 4.6, price: '₹1,200 for two', distance: '3 km', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80', aiPick: 'Best wood-fired pizza in town.' },
+  { name: 'Street Bites', cuisine: 'Street Food', rating: 4.8, price: '₹300 for two', distance: '0.5 km', img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80', aiPick: 'Must-try local chaat and vada pav.' },
+  { name: 'The Cozy Cup', cuisine: 'Cafe', rating: 4.4, price: '₹500 for two', distance: '1.5 km', img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80', aiPick: 'Perfect for a relaxed breakfast or coffee break.' },
+  { name: 'Sweet Tooth', cuisine: 'Desserts', rating: 4.7, price: '₹400 for two', distance: '2.2 km', img: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80', aiPick: 'Indulgent desserts you won\'t forget.' },
+  { name: 'Green Leaf', cuisine: 'Vegetarian', rating: 4.5, price: '₹700 for two', distance: '1.8 km', img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80', aiPick: 'Fresh, organic and purely vegetarian.' },
+  { name: 'Coastal Curry', cuisine: 'Indian', rating: 4.6, price: '₹900 for two', distance: '2.5 km', img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80', aiPick: 'Amazing seafood curries — a local favorite.' }
+];
+
+const GEMS = [
+  { name: 'Butterfly Beach', location: 'Goa', rating: 4.6, cost: 'Free', why: 'Less crowded than popular beaches and ideal for photography.', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
+  { name: 'Banganga Tank', location: 'Mumbai', rating: 4.4, cost: 'Free', why: 'Ancient temple tank hidden in the heart of the city.', img: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80' },
+  { name: 'Chorla Ghat', location: 'Goa', rating: 4.7, cost: 'Free', why: 'Lush green Western Ghats — a nature lover\'s paradise.', img: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80' },
+  { name: 'Yusmarg', location: 'Kashmir', rating: 4.8, cost: '₹200', why: 'A quieter alternative to Gulmarg with pristine meadows.', img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80' },
+  { name: 'Bhangarh Fort', location: 'Rajasthan', rating: 4.3, cost: '₹50', why: 'Mysterious ruins with a legendary tale.', img: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80' },
+  { name: 'Varkala Cliff', location: 'Kerala', rating: 4.7, cost: 'Free', why: 'Cliffside cafes and a beach away from the crowds.', img: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=600&q=80' }
+];
+
+/* ---------- State ---------- */
+let state = {
+  currentPage: 'home',
+  favorites: JSON.parse(localStorage.getItem('voyora_favs') || '[]'),
+  trips: JSON.parse(localStorage.getItem('voyora_trips') || '[]'),
+  currentTrip: null,
+  planner: { step: 1, destination: '', startDate: '', endDate: '', adults: 2, children: 0, budget: 25000, interests: [], style: 'Balanced', accommodation: 'Hotel' },
+  chatLang: 'en',
+  chatHistory: []
+};
+
+/* ---------- Navigation ---------- */
+function navigate(page) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  state.currentPage = page;
+
+  // Update active nav
+  document.querySelectorAll('.nav-link').forEach(l => {
+    l.classList.toggle('active', l.dataset.page === page);
+  });
+
+  // Lazy init per page
+  if (page === 'hotels') renderHotels();
+  if (page === 'restaurants') renderRestaurants();
+  if (page === 'gems') renderGems();
+  if (page === 'explore') renderExplore();
+  if (page === 'favorites') renderFavorites();
+  if (page === 'trips') renderTrips();
+  if (page === 'budget') renderBudget();
+  if (page === 'assistant' && state.chatHistory.length === 0) initChat();
+  if (page === 'itinerary' && state.currentTrip) renderItinerary();
+
+  closeMobileMenu();
+}
+
+function toggleMobileMenu() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+  document.getElementById('hamburger').classList.toggle('active');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('active');
+  document.getElementById('hamburger').classList.remove('active');
+}
+
+/* ---------- Toast ---------- */
+function showToast(msg, type = 'info') {
+  const icons = { success: '✓', error: '✕', warning: '⚠', info: 'ℹ' };
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + type;
+  toast.innerHTML = `<span class="toast-icon">${icons[type]}</span><span>${msg}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.animation = 'slideInRight 0.3s reverse';
+    setTimeout(() => toast.remove(), 300);
+  }, 3200);
+}
+
+/* ---------- Modal ---------- */
+function openModal(html) {
+  document.getElementById('modalContent').innerHTML = '<button class="modal-close" onclick="closeModal()">✕</button>' + html;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target.id === 'modalOverlay') closeModal();
+});
+
+/* ---------- Loading ---------- */
+function showLoading(text = 'VOYORA AI is creating your perfect journey...', sub = 'Analyzing your preferences and finding the best options') {
+  document.getElementById('loadingText').textContent = text;
+  document.getElementById('loadingSubtext').textContent = sub;
+  document.getElementById('loadingScreen').classList.add('active');
+}
+function hideLoading() {
+  document.getElementById('loadingScreen').classList.remove('active');
+}
+
+/* ---------- Favorites ---------- */
+function toggleFav(id, name) {
+  const idx = state.favorites.findIndex(f => f.id === id);
+  if (idx > -1) {
+    state.favorites.splice(idx, 1);
+    showToast('Removed from favorites', 'info');
+  } else {
+    state.favorites.push({ id, name });
+    showToast('Added to favorites ❤️', 'success');
+  }
+  localStorage.setItem('voyora_favs', JSON.stringify(state.favorites));
+  updateFavBadge();
+  document.querySelectorAll(`[data-fav-id="${id}"]`).forEach(el => {
+    el.classList.toggle('active', state.favorites.some(f => f.id === id));
+  });
+}
+function isFav(id) { return state.favorites.some(f => f.id === id); }
+function updateFavBadge() {
+  document.getElementById('favBadge').textContent = state.favorites.length;
+}
+
+/* ---------- Home render ---------- */
+function renderHome() {
+  const grid = document.getElementById('popularDestinations');
+  const keys = ['mumbai', 'goa', 'kashmir', 'rajasthan', 'kerala', 'bengaluru'];
+  grid.innerHTML = keys.map(k => {
+    const d = DESTINATIONS[k];
+    const id = 'dest-' + k;
+    return `
+      <div class="card">
+        <div class="card-image">
+          <img src="${d.img}" alt="${d.name}" loading="lazy">
+          <div class="card-badge">${d.category}</div>
+          <button class="card-fav ${isFav(id) ? 'active' : ''}" data-fav-id="${id}" onclick="toggleFav('${id}','${d.name}')" aria-label="Save">♥</button>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${d.name}</h3>
+          <p class="card-desc">${d.desc}</p>
+          <div class="card-meta"><span>⭐ ${d.rating}</span><span>🗓 ${d.bestTime}</span></div>
+          <div class="card-footer">
+            <div class="card-price">₹${d.budget.toLocaleString('en-IN')}<small> onwards</small></div>
+            <button class="btn btn-primary btn-sm" onclick="viewDestination('${k}')">Explore</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ---------- Explore ---------- */
+function renderExplore() {
+  filterExplore();
+}
+function filterExplore() {
+  const q = (document.getElementById('exploreSearch').value || '').toLowerCase();
+  const cat = document.getElementById('exploreCategory').value;
+  const grid = document.getElementById('exploreGrid');
+  const entries = Object.entries(DESTINATIONS).filter(([k, d]) => {
+    const matchQ = !q || d.name.toLowerCase().includes(q) || d.desc.toLowerCase().includes(q);
+    const matchC = cat === 'all' || d.category === cat;
+    return matchQ && matchC;
+  });
+  if (!entries.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="icon">🔍</div><h3>No destinations found</h3><p>Try a different search or filter.</p></div>`;
+    return;
+  }
+  grid.innerHTML = entries.map(([k, d]) => {
+    const id = 'dest-' + k;
+    return `
+      <div class="card">
+        <div class="card-image">
+          <img src="${d.img}" alt="${d.name}" loading="lazy">
+          <div class="card-badge">${d.category}</div>
+          <button class="card-fav ${isFav(id) ? 'active' : ''}" data-fav-id="${id}" onclick="toggleFav('${id}','${d.name}')">♥</button>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${d.name}</h3>
+          <p class="card-desc">${d.desc}</p>
+          <div class="card-meta"><span>⭐ ${d.rating}</span><span>🗓 ${d.bestTime}</span></div>
+          <div class="card-footer">
+            <div class="card-price">₹${d.budget.toLocaleString('en-IN')}<small> onwards</small></div>
+            <button class="btn btn-primary btn-sm" onclick="viewDestination('${k}')">Explore</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ---------- Destination page ---------- */
+function viewDestination(key) {
+  const d = DESTINATIONS[key];
+  if (!d) return;
+  document.getElementById('destHeroImg').src = d.img;
+  document.getElementById('destHeroName').textContent = d.name;
+  document.getElementById('destHeroDesc').textContent = d.desc;
+  document.getElementById('destStats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Best Time</div><div class="stat-value" style="font-size:1.1rem">${d.bestTime}</div></div>
+    <div class="stat-card"><div class="stat-label">Starting Budget</div><div class="stat-value" style="font-size:1.1rem">₹${d.budget.toLocaleString('en-IN')}</div></div>
+    <div class="stat-card"><div class="stat-label">Rating</div><div class="stat-value" style="font-size:1.1rem">⭐ ${d.rating}</div></div>
+    <div class="stat-card"><div class="stat-label">Category</div><div class="stat-value" style="font-size:1.1rem">${d.category}</div></div>`;
+  document.getElementById('destAttractions').innerHTML = d.attractions.map((a, i) => {
+    const id = `${key}-att-${i}`;
+    return `
+      <div class="card">
+        <div class="card-image">
+          <img src="${a.img}" alt="${a.name}" loading="lazy">
+          <button class="card-fav ${isFav(id) ? 'active' : ''}" data-fav-id="${id}" onclick="toggleFav('${id}','${a.name}')">♥</button>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${a.name}</h3>
+          <p class="card-desc">${a.desc}</p>
+          <div class="card-footer">
+            <div class="card-price">${a.cost === 0 ? 'Free' : '₹' + a.cost}</div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+  navigate('destination');
+}
+
+/* ---------- Hotels ---------- */
+function renderHotels() {
+  const price = document.getElementById('hotelPrice').value;
+  const rating = document.getElementById('hotelRating').value;
+  const type = document.getElementById('hotelType').value;
+  const list = HOTELS.filter(h => {
+    if (price !== 'all' && h.price > parseInt(price)) return false;
+    if (rating !== 'all' && h.rating < parseFloat(rating)) return false;
+    if (type !== 'all' && h.type !== type) return false;
+    return true;
+  });
+  const grid = document.getElementById('hotelsGrid');
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="icon">🏨</div><h3>No hotels match your filters</h3></div>`;
+    return;
+  }
+  grid.innerHTML = list.map((h, i) => {
+    const id = 'hotel-' + i;
+    return `
+      <div class="card">
+        <div class="card-image">
+          <img src="${h.img}" alt="${h.name}" loading="lazy">
+          <button class="card-fav ${isFav(id) ? 'active' : ''}" data-fav-id="${id}" onclick="toggleFav('${id}','${h.name}')">♥</button>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${h.name}</h3>
+          <div class="card-meta"><span>⭐ ${h.rating}</span><span>📍 ${h.distance}</span><span>${h.type}</span></div>
+          <div class="ai-pick"><span class="sparkle">✨</span> <div><strong>VOYORA AI Pick:</strong> ${h.aiPick}</div></div>
+          <div class="card-footer">
+            <div class="card-price">₹${h.price.toLocaleString('en-IN')}<small>/night</small></div>
+            <button class="btn btn-primary btn-sm" onclick="showToast('Hotel booking flow opened','success')">Book</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+function filterHotels() { renderHotels(); }
+
+/* ---------- Restaurants ---------- */
+function renderRestaurants() {
+  const cuisine = document.getElementById('restCuisine').value;
+  const list = RESTAURANTS.filter(r => cuisine === 'all' || r.cuisine === cuisine);
+  const grid = document.getElementById('restaurantsGrid');
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="icon">🍽</div><h3>No restaurants found</h3></div>`;
+    return;
+  }
+  grid.innerHTML = list.map((r, i) => {
+    const id = 'rest-' + i;
+    return `
+      <div class="card">
+        <div class="card-image">
+          <img src="${r.img}" alt="${r.name}" loading="lazy">
+          <button class="card-fav ${isFav(id) ? 'active' : ''}" data-fav-id="${id}" onclick="toggleFav('${id}','${r.name}')">♥</button>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${r.name}</h3>
+          <div class="card-meta"><span>⭐ ${r.rating}</span><span>🍽 ${r.cuisine}</span><span>📍 ${r.distance}</span></div>
+          <div class="ai-pick"><span class="sparkle">✨</span> <div><strong>AI Pick:</strong> ${r.aiPick}</div></div>
+          <div class="card-footer">
+            <div class="card-price">${r.price}</div>
+            <button class="btn btn-primary btn-sm" onclick="showToast('Table booking flow opened','success')">Book</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+function filterRestaurants() { renderRestaurants(); }
+
+/* ---------- Gems ---------- */
+function renderGems() {
+  const grid = document.getElementById('gemsGrid');
+  grid.innerHTML = GEMS.map((g, i) => {
+    const id = 'gem-' + i;
+    return `
+      <div class="card">
+        <div class="card-image">
+          <img src="${g.img}" alt="${g.name}" loading="lazy">
+          <div class="card-badge">💎 Hidden Gem</div>
+          <button class="card-fav ${isFav(id) ? 'active' : ''}" data-fav-id="${id}" onclick="toggleFav('${id}','${g.name}')">♥</button>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${g.name}</h3>
+          <div class="card-meta"><span>⭐ ${g.rating}</span><span>📍 ${g.location}</span></div>
+          <p class="card-desc">${g.why}</p>
+          <div class="card-footer">
+            <div class="card-price">${g.cost}</div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ---------- Planner ---------- */
+function initPlanner() {
+  // Populate datalist
+  const dl = document.getElementById('destList');
+  dl.innerHTML = Object.values(DESTINATIONS).map(d => `<option value="${d.name}">`).join('');
+  // Populate destination chips
+  const chips = document.getElementById('destChips');
+  chips.innerHTML = Object.entries(DESTINATIONS).map(([k, d]) =>
+    `<div class="chip" data-dest="${d.name}" onclick="pickChip(this, 'dest')">${d.name}</div>`
+  ).join('');
+  // Set min date
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('planStart').min = today;
+  document.getElementById('planEnd').min = today;
+
+  // Chip handlers
+  bindChips('budgetChips', 'budget');
+  bindChips('interestChips', 'interest');
+  bindChips('styleChips', 'style');
+  bindChips('accChips', 'acc');
+}
+function pickChip(el, type) {
+  if (type === 'dest') {
+    document.querySelectorAll('#destChips .chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('planDest').value = el.dataset.dest;
+  }
+}
+function bindChips(containerId, type) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (type === 'interest') {
+        chip.classList.toggle('selected');
+      } else {
+        container.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+        chip.classList.add('selected');
+      }
+    });
+  });
+}
+function plannerNext(step) {
+  if (!validateStep(step)) return;
+  saveStepData(step);
+  showPlannerStep(step + 1);
+}
+function plannerPrev(step) {
+  showPlannerStep(step - 1);
+}
+function showPlannerStep(n) {
+  document.querySelectorAll('.planner-step').forEach(s => {
+    s.classList.toggle('active', parseInt(s.dataset.step) === n);
+  });
+  document.querySelectorAll('.progress-step').forEach(s => {
+    const sN = parseInt(s.dataset.step);
+    s.classList.toggle('active', sN === n);
+    s.classList.toggle('completed', sN < n);
+  });
+  window.scrollTo({ top: 200, behavior: 'smooth' });
+}
+function validateStep(step) {
+  let ok = true;
+  const clear = (id) => document.getElementById(id)?.classList.remove('visible');
+  const show = (id) => document.getElementById(id)?.classList.add('visible');
+  if (step === 1) {
+    clear('err-dest');
+    if (!document.getElementById('planDest').value.trim()) { show('err-dest'); ok = false; }
+  }
+  if (step === 2) {
+    clear('err-start'); clear('err-end');
+    const s = document.getElementById('planStart').value;
+    const e = document.getElementById('planEnd').value;
+    if (!s) { show('err-start'); ok = false; }
+    if (!e) { show('err-end'); ok = false; }
+    if (s && e && new Date(e) < new Date(s)) { show('err-end'); ok = false; }
+  }
+  if (step === 5) {
+    clear('err-interests');
+    const sel = document.querySelectorAll('#interestChips .chip.selected');
+    if (!sel.length) { show('err-interests'); ok = false; }
+  }
+  if (!ok) showToast('Please complete the required fields', 'warning');
+  return ok;
+}
+function saveStepData(step) {
+  if (step === 1) state.planner.destination = document.getElementById('planDest').value.trim();
+  if (step === 2) {
+    state.planner.startDate = document.getElementById('planStart').value;
+    state.planner.endDate = document.getElementById('planEnd').value;
+  }
+  if (step === 3) {
+    state.planner.adults = parseInt(document.getElementById('planAdults').value) || 1;
+    state.planner.children = parseInt(document.getElementById('planChildren').value) || 0;
+  }
+  if (step === 4) {
+    const custom = document.getElementById('planCustomBudget').value;
+    if (custom) state.planner.budget = parseInt(custom);
+    else {
+      const sel = document.querySelector('#budgetChips .chip.selected');
+      if (sel) state.planner.budget = parseInt(sel.dataset.budget);
+    }
+  }
+  if (step === 5) {
+    state.planner.interests = Array.from(document.querySelectorAll('#interestChips .chip.selected')).map(c => c.dataset.interest);
+  }
+  if (step === 6) {
+    const sel = document.querySelector('#styleChips .chip.selected');
+    if (sel) state.planner.style = sel.dataset.style;
+  }
+  if (step === 7) {
+    const sel = document.querySelector('#accChips .chip.selected');
+    if (sel) state.planner.accommodation = sel.dataset.acc;
+  }
+}
+function startHeroSearch() {
+  const dest = document.getElementById('heroDest').value.trim();
+  if (!dest) { showToast('Please enter a destination', 'warning'); return; }
+  state.planner.destination = dest;
+  state.planner.budget = parseInt(document.getElementById('heroBudget').value);
+  state.planner.adults = parseInt(document.getElementById('heroTravelers').value) || 2;
+  navigate('planner');
+  // Preselect destination chip if matched
+  document.querySelectorAll('#destChips .chip').forEach(c => {
+    if (c.dataset.dest.toLowerCase() === dest.toLowerCase()) {
+      c.classList.add('selected');
+      document.getElementById('planDest').value = c.dataset.dest;
+    }
+  });
+}
+
+/* ---------- AI Generator ---------- */
+function generateTrip() {
+  saveStepData(7);
+  const p = state.planner;
+  showLoading('VOYORA AI is creating your perfect journey...', 'Personalizing based on your interests and budget');
+  setTimeout(() => {
+    const trip = buildTrip(p);
+    state.currentTrip = trip;
+    hideLoading();
+    navigate('itinerary');
+    renderItinerary();
+    showToast('Your personalized trip is ready! 🎉', 'success');
+  }, 2400);
+}
+
+function buildTrip(p) {
+  // Find base destination data
+  const key = Object.keys(DESTINATIONS).find(k =>
+    DESTINATIONS[k].name.toLowerCase() === p.destination.toLowerCase()
+  );
+  const base = key ? DESTINATIONS[key] : null;
+
+  const start = new Date(p.startDate);
+  const end = new Date(p.endDate);
+  const days = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)) + 1);
+
+  // Cost calculation with variety
+  const accommodationCosts = { 'Budget Hotel': 1200, 'Hotel': 3000, 'Resort': 5500, 'Luxury': 9000, 'Homestay': 1800 };
+  const perNight = accommodationCosts[p.accommodation] || 3000;
+  const styleMult = { Budget: 0.7, Balanced: 1, Luxury: 1.6, Backpacker: 0.6, Family: 1.1, Solo: 0.8, Couple: 1.15 }[p.style] || 1;
+
+  const accommodation = Math.round(perNight * (days - 1) * styleMult);
+  const food = Math.round(700 * days * (p.adults + p.children * 0.5) * styleMult);
+  const transport = Math.round(500 * days * p.adults * styleMult);
+  const activities = Math.round(800 * days * p.adults * (p.interests.length / 4 || 1) * styleMult);
+  const shopping = Math.round(600 * days * styleMult);
+  const misc = Math.round(400 * days * styleMult);
+  const total = accommodation + food + transport + activities + shopping + misc;
+
+  // Day plans with variety
+  const morningPool = base ? base.attractions.map(a => ({ name: a.name, desc: a.desc, cost: a.cost, img: a.img })) : [];
+  const afternoonPool = [
+    { name: 'Local market walk', desc: 'Explore local crafts and souvenirs.', cost: 300, img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80' },
+    { name: 'Heritage walk', desc: 'Guided tour through historic streets.', cost: 250, img: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80' },
+    { name: 'Museum visit', desc: 'Discover the region\'s history and art.', cost: 150, img: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=600&q=80' }
+  ];
+  const eveningPool = [
+    { name: 'Sunset viewpoint', desc: 'Catch the golden hour at a scenic spot.', cost: 0, img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
+    { name: 'Local food trail', desc: 'Street food tasting with a local guide.', cost: 400, img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80' },
+    { name: 'Cultural performance', desc: 'Traditional music and dance show.', cost: 500, img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80' }
+  ];
+
+  // Add interest-based extras
+  const interestExtras = {
+    Adventure: { name: 'Trek / Adventure activity', desc: 'Thrilling outdoor activity.', cost: 1200, img: 'https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=600&q=80' },
+    Beaches: { name: 'Beach day', desc: 'Relax, swim and soak in the sun.', cost: 0, img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
+    Nature: { name: 'Nature park visit', desc: 'Walk through lush greenery.', cost: 200, img: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80' },
+    Food: { name: 'Cooking class', desc: 'Learn to cook a local specialty.', cost: 800, img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&q=80' },
+    Shopping: { name: 'Bazaar shopping', desc: 'Shop local textiles and crafts.', cost: 1000, img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80' },
+    History: { name: 'Historical monument', desc: 'Visit a landmark of the past.', cost: 300, img: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80' },
+    Culture: { name: 'Local cultural show', desc: 'Experience regional traditions.', cost: 500, img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80' },
+    Nightlife: { name: 'Night market / bar', desc: 'Experience the city after dark.', cost: 700, img: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80' },
+    Photography: { name: 'Photo walk', desc: 'Capture the best angles of the city.', cost: 0, img: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&q=80' },
+    Luxury: { name: 'Spa & wellness', desc: 'Relax with a premium spa session.', cost: 2500, img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80' },
+    Spiritual: { name: 'Temple visit', desc: 'Visit a revered spiritual site.', cost: 0, img: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80' },
+    Wildlife: { name: 'Wildlife safari', desc: 'Spot animals in their natural habitat.', cost: 1500, img: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&q=80' }
+  };
+  const extras = p.interests.map(i => interestExtras[i]).filter(Boolean);
+
+  // Build days
+  const planDays = [];
+  for (let d = 0; d < days; d++) {
+    const morning = pick(base && base.attractions.length ? base.attractions[d % base.attractions.length] : { name: 'Morning at leisure', desc: 'Slow start to the day.', cost: 0, img: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80' });
+    const afternoon = pick(afternoonPool, d);
+    const evening = pick(eveningPool, d + 1);
+    const extra = extras.length ? extras[d % extras.length] : null;
+    const items = [
+      { period: 'Morning', time: '9:00 AM', ...morning, location: p.destination, travel: '10 min walk' },
+      { period: 'Afternoon', time: '1:30 PM', ...afternoon, location: p.destination, travel: '15 min cab' }
+    ];
+    if (extra) items.push({ period: 'Afternoon', time: '4:00 PM', ...extra, location: p.destination, travel: '20 min cab' });
+    items.push({ period: 'Evening', time: '7:00 PM', ...evening, location: p.destination, travel: '10 min walk' });
+    planDays.push({ day: d + 1, date: addDays(start, d), items });
+  }
+
+  return {
+    id: 'trip-' + Date.now(),
+    destination: p.destination,
+    destinationKey: key,
+    startDate: p.startDate,
+    endDate: p.endDate,
+    days,
+    adults: p.adults,
+    children: p.children,
+    budget: p.budget,
+    style: p.style,
+    accommodation: p.accommodation,
+    interests: p.interests,
+    planDays,
+    costs: { accommodation, food, transport, activities, shopping, misc, total },
+    sustainScore: 70 + Math.floor(Math.random() * 20),
+    savedAt: new Date().toISOString()
+  };
+}
+
+function pick(arr, seed) { return arr[seed % arr.length]; }
+function addDays(date, n) { const d = new Date(date); d.setDate(d.getDate() + n); return d; }
+function formatDate(s) { return new Date(s).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }); }
+
+/* ---------- Itinerary render ---------- */
+function renderItinerary() {
+  const t = state.currentTrip;
+  if (!t) {
+    document.getElementById('itinTitle').textContent = 'No trip yet';
+    document.getElementById('itinSubtitle').textContent = 'Plan your first trip to see your AI itinerary here.';
+    document.getElementById('itinSummary').innerHTML = '';
+    document.getElementById('itineraryDays').innerHTML = `<div class="empty-state"><div class="icon">🗺</div><h3>No itinerary yet</h3><p>Generate a trip to see your personalized plan.</p><button class="btn btn-primary" style="margin-top:16px" onclick="navigate('planner')">✨ Plan My Trip</button></div>`;
+    return;
+  }
+  document.getElementById('itinTitle').textContent = `${t.destination} · ${t.days} Days`;
+  document.getElementById('itinSubtitle').textContent = `${formatDate(t.startDate)} → ${formatDate(t.endDate)} · ${t.adults} adult${t.adults > 1 ? 's' : ''}${t.children ? ' · ' + t.children + ' child' : ''} · ${t.style} style`;
+
+  document.getElementById('itinSummary').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Destination</div><div class="stat-value" style="font-size:1.15rem">${t.destination}</div></div>
+    <div class="stat-card"><div class="stat-label">Duration</div><div class="stat-value" style="font-size:1.15rem">${t.days} days</div></div>
+    <div class="stat-card"><div class="stat-label">Travelers</div><div class="stat-value" style="font-size:1.15rem">${t.adults + t.children}</div></div>
+    <div class="stat-card"><div class="stat-label">Budget</div><div class="stat-value" style="font-size:1.15rem">₹${t.budget.toLocaleString('en-IN')}</div></div>`;
+
+  // Smart update
+  document.getElementById('smartUpdateBox').innerHTML = `
+    <div class="card" style="padding:24px;border-left:4px solid var(--warning);background:linear-gradient(135deg,rgba(245,158,11,0.05),rgba(13,148,136,0.05))">
+      <div class="flex-between" style="flex-wrap:wrap;gap:12px">
+        <div style="flex:1;min-width:260px">
+          <div class="eyebrow" style="color:var(--warning)">✨ AI Smart Update</div>
+          <h3 style="margin-bottom:8px">🌧 Weather Alert</h3>
+          <p style="color:var(--gray-600)">Rain is expected between 2 PM – 5 PM on Day 2.</p>
+          <p style="margin-top:8px"><strong>VOYORA AI:</strong> "Your outdoor activity has been moved to 6 PM. We recommend visiting the museum at 3 PM instead."</p>
+        </div>
+        <div class="flex-col gap-8">
+          <button class="btn btn-primary btn-sm" onclick="acceptUpdate()">Accept Changes</button>
+          <button class="btn btn-secondary btn-sm" onclick="keepOriginal()">Keep Original</button>
+        </div>
+      </div>
+    </div>`;
+
+  // Days
+  document.getElementById('itineraryDays').innerHTML = t.planDays.map(d => `
+    <div style="margin-bottom:48px">
+      <div class="flex-between" style="margin-bottom:20px;flex-wrap:wrap;gap:12px">
+        <div>
+          <h3 class="display-3">Day ${d.day}</h3>
+          <p class="text-muted">${new Date(d.date).toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+        </div>
+        <div class="card-badge" style="position:static;background:rgba(13,148,136,0.1);color:var(--teal)">AI Optimized</div>
+      </div>
+      <div class="timeline">
+        ${d.items.map(it => `
+          <div class="timeline-item">
+            <div class="timeline-dot">${it.period[0]}</div>
+            <div class="timeline-content">
+              <div class="flex gap-16" style="align-items:flex-start;flex-wrap:wrap">
+                <img src="${it.img}" alt="${it.name}" style="width:120px;height:90px;object-fit:cover;border-radius:var(--radius-md);flex-shrink:0">
+                <div style="flex:1;min-width:200px">
+                  <div class="timeline-time">${it.period} · ${it.time}</div>
+                  <h4 style="font-size:1.05rem;margin-bottom:6px">${it.name}</h4>
+                  <p style="color:var(--gray-500);font-size:0.9rem">${it.desc}</p>
+                  <div class="card-meta" style="margin-top:8px">
+                    <span>📍 ${it.location}</span>
+                    <span>🚕 ${it.travel}</span>
+                    <span>💰 ${it.cost === 0 ? 'Free' : '₹' + it.cost}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+
+  // Costs
+  renderCostChart();
+  document.getElementById('totalCost').textContent = '₹' + t.costs.total.toLocaleString('en-IN');
+  document.getElementById('costPerPerson').textContent = `per person (${t.adults + t.children} travelers)`;
+
+  // Sustainability
+  document.getElementById('sustainScore').textContent = t.sustainScore;
+  document.querySelector('.score-ring').style.background = `conic-gradient(var(--teal) 0% ${t.sustainScore}%, var(--gray-200) ${t.sustainScore}% 100%)`;
+}
+
+function renderCostChart() {
+  const t = state.currentTrip;
+  if (!t) return;
+  const cats = [
+    { label: '🏨 Accommodation', key: 'accommodation', color: 'linear-gradient(90deg,#0d9488,#14b8a6)' },
+    { label: '🍴 Food', key: 'food', color: 'linear-gradient(90deg,#f59e0b,#fbbf24)' },
+    { label: '🚕 Transportation', key: 'transport', color: 'linear-gradient(90deg,#3b82f6,#60a5fa)' },
+    { label: '🎟 Activities', key: 'activities', color: 'linear-gradient(90deg,#8b5cf6,#a78bfa)' },
+    { label: '🛍 Shopping', key: 'shopping', color: 'linear-gradient(90deg,#ec4899,#f472b6)' },
+    { label: '📦 Miscellaneous', key: 'misc', color: 'linear-gradient(90deg,#6b7280,#9ca3af)' }
+  ];
+  const max = Math.max(...cats.map(c => t.costs[c.key]));
+  document.getElementById('costChart').innerHTML = cats.map(c => {
+    const pct = max ? (t.costs[c.key] / max) * 100 : 0;
+    return `
+      <div class="chart-row">
+        <div class="chart-label">${c.label}</div>
+        <div class="chart-bar-wrap"><div class="chart-bar" style="width:0%;background:${c.color}" data-w="${pct}"></div></div>
+        <div class="chart-value">₹${t.costs[c.key].toLocaleString('en-IN')}</div>
+      </div>`;
+  }).join('');
+  // Animate
+  setTimeout(() => {
+    document.querySelectorAll('#costChart .chart-bar').forEach(b => {
+      b.style.width = b.dataset.w + '%';
+    });
+  }, 100);
+}
+
+function switchItinTab(tab, el) {
+  document.querySelectorAll('#page-itinerary .tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  ['itinerary', 'costs', 'sustainable'].forEach(t => {
+    document.getElementById('itinTab-' + t).classList.toggle('hidden', t !== tab);
+  });
+  if (tab === 'costs') renderCostChart();
+}
+
+function acceptUpdate() {
+  showToast('AI changes applied to your itinerary ✨', 'success');
+  document.getElementById('smartUpdateBox').innerHTML = `
+    <div class="alert alert-success">✅ AI Smart Update applied — your itinerary has been adjusted for the weather.</div>`;
+}
+function keepOriginal() {
+  showToast('Keeping original itinerary', 'info');
+  document.getElementById('smartUpdateBox').innerHTML = `
+    <div class="alert alert-info">ℹ Original itinerary retained. You can always ask VOYORA AI for updates.</div>`;
+}
+
+/* ---------- Save trip ---------- */
+function saveCurrentTrip() {
+  if (!state.currentTrip) { showToast('No trip to save', 'warning'); return; }
+  const exists = state.trips.find(t => t.id === state.currentTrip.id);
+  if (!exists) {
+    state.trips.push(state.currentTrip);
+    localStorage.setItem('voyora_trips', JSON.stringify(state.trips));
+  }
+  showToast('Trip saved to My Trips 💾', 'success');
+}
+
+/* ---------- Trips page ---------- */
+function renderTrips() {
+  const up = document.getElementById('upcomingTrips');
+  const sv = document.getElementById('savedTrips');
+  if (!state.trips.length) {
+    up.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="icon">🧳</div><h3>No trips yet</h3><p>Generate your first AI itinerary to see it here.</p><button class="btn btn-primary" style="margin-top:16px" onclick="navigate('planner')">✨ Plan My Trip</button></div>`;
+    sv.innerHTML = '';
+    return;
+  }
+  const cards = state.trips.map(t => `
+    <div class="card">
+      <div class="card-body">
+        <div class="card-badge" style="position:static;display:inline-block;background:rgba(13,148,136,0.1);color:var(--teal);margin-bottom:8px">${t.days} Days</div>
+        <h3 class="card-title">${t.destination}</h3>
+        <div class="card-meta">
+          <span>🗓 ${formatDate(t.startDate)}</span>
+          <span>👥 ${t.adults + t.children}</span>
+          <span>💰 ₹${t.budget.toLocaleString('en-IN')}</span>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary btn-sm" onclick="loadTrip('${t.id}')">View Trip</button>
+          <button class="btn btn-secondary btn-sm" onclick="deleteTrip('${t.id}')">Delete</button>
+        </div>
+      </div>
+    </div>`).join('');
+  up.innerHTML = cards;
+  sv.innerHTML = cards;
+}
+function loadTrip(id) {
+  const t = state.trips.find(t => t.id === id);
+  if (!t) return;
+  state.currentTrip = t;
+  navigate('itinerary');
+  renderItinerary();
+}
+function deleteTrip(id) {
+  state.trips = state.trips.filter(t => t.id !== id);
+  localStorage.setItem('voyora_trips', JSON.stringify(state.trips));
+  renderTrips();
+  showToast('Trip deleted', 'info');
+}
+
+/* ---------- Favorites page ---------- */
+function renderFavorites() {
+  const grid = document.getElementById('favoritesGrid');
+  const empty = document.getElementById('favEmpty');
+  if (!state.favorites.length) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+  grid.innerHTML = state.favorites.map(f => `
+    <div class="card">
+      <div class="card-body">
+        <div style="font-size:2rem;margin-bottom:8px">❤️</div>
+        <h3 class="card-title">${f.name}</h3>
+        <p class="text-muted" style="font-size:0.85rem">Saved item</p>
+        <div class="card-footer">
+          <button class="btn btn-secondary btn-sm" onclick="toggleFav('${f.id}','${f.name}');renderFavorites()">Remove</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+/* ---------- Budget page ---------- */
+function renderBudget() {
+  const t = state.currentTrip;
+  const totalBudget = t ? t.budget : 25000;
+  const estCost = t ? t.costs.total : 21800;
+  const remaining = totalBudget - estCost;
+
+  document.getElementById('bTotalBudget').textContent = '₹' + totalBudget.toLocaleString('en-IN');
+  document.getElementById('bEstCost').textContent = '₹' + estCost.toLocaleString('en-IN');
+  document.getElementById('bRemaining').textContent = (remaining >= 0 ? '₹' : '-₹') + Math.abs(remaining).toLocaleString('en-IN');
+  document.getElementById('bRemaining').style.color = remaining >= 0 ? 'var(--success)' : 'var(--danger)';
+
+  const cats = t ? [
+    { label: '🏨 Hotel', key: 'accommodation', color: 'linear-gradient(90deg,#0d9488,#14b8a6)' },
+    { label: '🍴 Food', key: 'food', color: 'linear-gradient(90deg,#f59e0b,#fbbf24)' },
+    { label: '🚕 Transport', key: 'transport', color: 'linear-gradient(90deg,#3b82f6,#60a5fa)' },
+    { label: '🎟 Activities', key: 'activities', color: 'linear-gradient(90deg,#8b5cf6,#a78bfa)' },
+    { label: '🛍 Shopping', key: 'shopping', color: 'linear-gradient(90deg,#ec4899,#f472b6)' },
+    { label: '📦 Misc', key: 'misc', color: 'linear-gradient(90deg,#6b7280,#9ca3af)' }
+  ] : [];
+  const max = cats.length ? Math.max(...cats.map(c => t.costs[c.key])) : 1;
+  document.getElementById('budgetChart').innerHTML = cats.map(c => {
+    const pct = max ? (t.costs[c.key] / max) * 100 : 0;
+    return `
+      <div class="chart-row">
+        <div class="chart-label">${c.label}</div>
+        <div class="chart-bar-wrap"><div class="chart-bar" style="width:0%;background:${c.color}" data-w="${pct}"></div></div>
+        <div class="chart-value">₹${t.costs[c.key].toLocaleString('en-IN')}</div>
+      </div>`;
+  }).join('');
+  setTimeout(() => {
+    document.querySelectorAll('#budgetChart .chart-bar').forEach(b => { b.style.width = b.dataset.w + '%'; });
+  }, 100);
+
+  const alertBox = document.getElementById('budgetAlertBox');
+  if (remaining < 0) {
+    alertBox.innerHTML = `<div class="alert alert-error">⚠ Your trip is ₹${Math.abs(remaining).toLocaleString('en-IN')} over budget.</div>`;
+  } else {
+    alertBox.innerHTML = `<div class="alert alert-success">✓ You're within budget. ₹${remaining.toLocaleString('en-IN')} remaining.</div>`;
+  }
+}
+
+function optimizeBudget() {
+  if (!state.currentTrip) { showToast('Generate a trip first', 'warning'); return; }
+  showLoading('Optimizing your budget...', 'Finding the best ways to save');
+  setTimeout(() => {
+    hideLoading();
+    const t = state.currentTrip;
+    const suggestions = [
+      { title: 'Choose a cheaper hotel', saving: Math.round(t.costs.accommodation * 0.25), desc: 'Switch to a 3-star property nearby — same location, lower price.' },
+      { title: 'Use public transport', saving: Math.round(t.costs.transport * 0.4), desc: 'Metro and buses are cheap and convenient in most cities.' },
+      { title: 'Choose a local restaurant', saving: Math.round(t.costs.food * 0.2), desc: 'Local eateries serve authentic food at half the price.' },
+      { title: 'Visit free attractions', saving: Math.round(t.costs.activities * 0.3), desc: 'Many parks, beaches and markets are free to explore.' },
+      { title: 'Reduce shopping budget', saving: Math.round(t.costs.shopping * 0.2), desc: 'Set a shopping cap and stick to it.' }
+    ];
+    document.getElementById('aiSuggestionsBox').innerHTML = `
+      <div class="card" style="padding:32px">
+        <h3 style="margin-bottom:8px">✨ AI Budget Suggestions</h3>
+        <p class="text-muted" style="margin-bottom:24px">Apply these to save money without missing out.</p>
+        <div class="flex-col gap-12">
+          ${suggestions.map(s => `
+            <div class="flex-between" style="padding:16px;background:var(--gray-100);border-radius:var(--radius-md);flex-wrap:wrap;gap:12px">
+              <div style="flex:1;min-width:200px">
+                <h4 style="font-family:var(--font-body);font-size:1rem;margin-bottom:4px">${s.title}</h4>
+                <p class="text-muted" style="font-size:0.85rem">${s.desc}</p>
+              </div>
+              <div style="text-align:right">
+                <div style="color:var(--success);font-weight:700">Save ₹${s.saving.toLocaleString('en-IN')}</div>
+              </div>
+            </div>`).join('')}
+        </div>
+        <button class="btn btn-gold btn-block" style="margin-top:24px" onclick="applyOptimizations()">Apply AI Suggestions</button>
+      </div>`;
+    showToast('AI suggestions ready 💡', 'success');
+  }, 1800);
+}
+
+function applyOptimizations() {
+  if (!state.currentTrip) return;
+  const t = state.currentTrip;
+  t.costs.accommodation = Math.round(t.costs.accommodation * 0.75);
+  t.costs.transport = Math.round(t.costs.transport * 0.6);
+  t.costs.food = Math.round(t.costs.food * 0.8);
+  t.costs.activities = Math.round(t.costs.activities * 0.7);
+  t.costs.shopping = Math.round(t.costs.shopping * 0.8);
+  t.costs.total = t.costs.accommodation + t.costs.food + t.costs.transport + t.costs.activities + t.costs.shopping + t.costs.misc;
+  renderBudget();
+  showToast('AI suggestions applied! Budget optimized 🎉', 'success');
+  document.getElementById('aiSuggestionsBox').innerHTML = `<div class="alert alert-success">✅ Optimizations applied. Your trip is now more affordable.</div>`;
+}
+
+/* ---------- AI Assistant Chat ---------- */
+function initChat() {
+  state.chatHistory = [];
+  document.getElementById('chatMessages').innerHTML = '';
+  addChatMsg('ai', "Namaste! 🙏 I'm VOYORA AI, your personal travel assistant. I can help you plan, optimize, and discover. What would you like to know?");
+}
+function addChatMsg(role, text) {
+  const box = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + role;
+  div.textContent = text;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+  state.chatHistory.push({ role, text });
+}
+function sendQuick(text) {
+  document.getElementById('chatInput').value = text;
+  sendChat();
+}
+function sendChat() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  addChatMsg('user', text);
+  input.value = '';
+  setTimeout(() => {
+    const reply = aiReply(text, state.chatLang);
+    addChatMsg('ai', reply);
+  }, 700);
+}
+function aiReply(q, lang) {
+  const lq = q.toLowerCase();
+  const t = state.currentTrip;
+  const dest = t ? t.destination : 'your destination';
+
+  const replies = {
+    en: {
+      nearby: `Around ${dest}, I recommend visiting the local market and the waterfront — both are within 2 km and perfect for a relaxed walk.`,
+      cheaper: `Sure! I've adjusted tomorrow's itinerary to stay within ₹3,000. Switching to a local restaurant and using public transport will save you about ₹1,200.`,
+      food: `The top-rated local spots near you are Spice Route (Indian, ⭐4.7) and Street Bites (Street Food, ⭐4.8). Both fit a moderate budget.`,
+      today: `Today, I suggest: Morning — visit the main attraction; Afternoon — local market; Evening — sunset viewpoint. All within your budget.`,
+      gems: `Try Butterfly Beach and Chorla Ghat — both are lesser-known, peaceful and great for photography.`,
+      plan: `I can plan a complete trip for you! Just head to the AI Planner and tell me your destination, dates, budget and interests.`,
+      default: `I understand! I can help with itineraries, budgets, hotels, restaurants and hidden gems. Try asking "What's nearby?" or "Make my trip cheaper".`
+    },
+    hi: {
+      nearby: `${dest} के आसपास, मैं स्थानीय बाज़ार और वॉटरफ्रंट की सलाह देता हूँ — दोनों 2 किमी के भीतर हैं।`,
+      cheaper: `ज़रूर! मैंने कल की यात्रा को ₹3,000 के भीतर कर दिया है। स्थानीय रेस्टोरेंट और पब्लिक ट्रांसपोर्ट से लगभग ₹1,200 बचेंगे।`,
+      food: `आपके पास के टॉप रेस्टोरेंट: Spice Route (भारतीय, ⭐4.7) और Street Bites (स्ट्रीट फूड, ⭐4.8)।`,
+      today: `आज का सुझाव: सुबह — मुख्य आकर्षण; दोपहर — स्थानीय बाज़ार; शाम — सूर्यास्त स्थल।`,
+      gems: `Butterfly Beach और Chorla Ghat आज़माएँ — कम भीड़, शांत और फोटोग्राफी के लिए बढ़िया।`,
+      plan: `मैं आपके लिए पूरी यात्रा बना सकता हूँ! AI Planner पर जाएँ और अपनी पसंद बताएँ।`,
+      default: `मैं समझता हूँ! यात्रा कार्यक्रम, बजट, होटल, रेस्टोरेंट और छिपे रत्नों में मदद कर सकता हूँ।`
+    },
+    mr: {
+      nearby: `${dest} जवळ, मी स्थानिक बाजार आणि वॉटरफ्रंटची शिफारस करतो — दोन्ही 2 किमी अंतरावर आहेत.`,
+      cheaper: `नक्कीच! मी उद्याचा प्रवास ₹3,000 मध्ये आणला आहे. स्थानिक रेस्टॉरंट आणि सार्वजनिक वाहतुकीने सुमारे ₹1,200 वाचतील.`,
+      food: `तुमच्या जवळील टॉप रेस्टॉरंट: Spice Route (भारतीय, ⭐4.7) आणि Street Bites (स्ट्रीट फूड, ⭐4.8).`,
+      today: `आजची शिफारस: सकाळ — मुख्य आकर्षण; दुपार — स्थानिक बाजार; संध्याकाळ — सूर्यास्त ठिकाण.`,
+      gems: `Butterfly Beach आणि Chorla Ghat वापरून पहा — कमी गर्दी, शांत आणि फोटोग्राफीसाठी उत्तम.`,
+      plan: `मी तुमच्यासाठी संपूर्ण सहल तयार करू शकतो! AI Planner वर जा आणि तुमच्या आवडी सांगा.`,
+      default: `मी समजतो! प्रवास कार्यक्रम, बजेट, हॉटेल, रेस्टॉरंट आणि छुपे रत्नांमध्ये मदत करू शकतो.`
+    }
+  };
+  const r = replies[lang] || replies.en;
+  if (/nearby|पास|जवळ/.test(lq)) return r.nearby;
+  if (/cheap|cheaper|बजट|सस्ता|स्वस्त/.test(lq)) return r.cheaper;
+  if (/food|restaurant|खाना|रेस्टोरेंट|खाद्य/.test(lq)) return r.food;
+  if (/today|आज|visit/.test(lq)) return r.today;
+  if (/hidden|gem|छिपे|रत्न/.test(lq)) return r.gems;
+  if (/plan|यात्रा|सहल/.test(lq)) return r.plan;
+  return r.default;
+}
+
+// Language switcher
+document.getElementById('langSelect')?.addEventListener('change', e => {
+  state.chatLang = e.target.value;
+  const names = { en: 'English', hi: 'हिन्दी', mr: 'मराठी' };
+  addChatMsg('ai', `Language switched to ${names[state.chatLang]}. How can I help?`);
+});
+
+/* ---------- Auth ---------- */
+function doLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const type = document.getElementById('loginType').value;
+  if (!email || !pass) { showToast('Please fill all fields', 'warning'); return; }
+  if (!/^\S+@\S+\.\S+$/.test(email)) { showToast('Please enter a valid email', 'warning'); return; }
+  localStorage.setItem('voyora_user', JSON.stringify({ email, type }));
+  showToast('Welcome back to VOYORA! 👋', 'success');
+  setTimeout(() => navigate(type === 'business' ? 'business' : 'home'), 800);
+}
+function doSignup() {
+  const name = document.getElementById('signupName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const pass = document.getElementById('signupPass').value;
+  const type = document.getElementById('signupType').value;
+  if (!name || !email || !pass) { showToast('Please fill all fields', 'warning'); return; }
+  if (!/^\S+@\S+\.\S+$/.test(email)) { showToast('Please enter a valid email', 'warning'); return; }
+  if (pass.length < 4) { showToast('Password must be at least 4 characters', 'warning'); return; }
+  localStorage.setItem('voyora_user', JSON.stringify({ name, email, type }));
+  showToast('Account created successfully! 🎉', 'success');
+  setTimeout(() => navigate(type === 'business' ? 'business' : 'home'), 800);
+}
+
+/* ---------- Business tabs ---------- */
+function switchBizTab(tab, el) {
+  document.querySelectorAll('#page-business .tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  ['overview', 'listings', 'offers'].forEach(t => {
+    const el2 = document.getElementById('bizTab-' + t);
+    if (el2) el2.classList.toggle('hidden', t !== tab);
+  });
+}
+
+/* ---------- Init ---------- */
+window.addEventListener('DOMContentLoaded', () => {
+  renderHome();
+  initPlanner();
+  updateFavBadge();
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Restore user
+  const user = localStorage.getItem('voyora_user');
+  if (user) {
+    try {
+      const u = JSON.parse(user);
+      if (u.email) console.log('Logged in as', u.email);
+    } catch (e) {}
+  }
+
+  // Default dates in planner
+  const today = new Date();
+  const nextWeek = new Date();
+  nextWeek.setDate(today.getDate() + 7);
+  document.getElementById('planStart').value = today.toISOString().split('T')[0];
+  document.getElementById('planEnd').value = nextWeek.toISOString().split('T')[0];
+  document.getElementById('heroDate').value = today.toISOString().split('T')[0];
+
+  // Auto-init chat if on assistant
+  if (state.currentPage === 'assistant') initChat();
+
+  // Keyboard: Escape closes modal
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
+</body>
+</html>
