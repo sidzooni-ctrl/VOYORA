@@ -1,89 +1,72 @@
-# 🌍 VOYORA — Your World, Your Way.
-> **AI-Powered Smart Tourism Ecosystem**  
-> *Dynamic Itinerary Planning • Geospatial Smart Maps • AI Replanners • Local Business Hub • Group Travel • Guaranteed Offline Mode*
+# 🌍 VOYORA — Your world, your way.
+> **Premium, Immersive 3D AI-Powered Tourism Platform**  
+> *Interactive 3D Globe • CSS 3D Coverflow • Depth Layering • 3D Tilt Mechanics • Geospatial World Map • AI Replanner • Guaranteed Offline Mode*
 
 ---
 
-## 🚀 Overview
+## ✨ Overview
 
-**VOYORA** is an AI-powered smart tourism platform engineered to make travel planning personalized, affordable, dynamic, sustainable, and convenient. Built for the **Smart India Hackathon (SIH)**, VOYORA bridges the gap between travelers, AI itinerary synthesis, grassroots tourism businesses, and collaborative group travel—with complete offline reliability.
+**VOYORA** is a next-generation 3D smart travel platform designed to make travel planning personalized, affordable, dynamic, sustainable, and convenient. Built with modern 2026 travel-tech startup aesthetics (Apple-level cleanliness + futuristic travel technology + immersive 3D + glass UI), VOYORA combines interactive spatial computing with full AI trip planning and offline reliability.
 
 ---
 
 ## 🛠️ Technology Stack
 
-VOYORA strictly adheres to the pure web standard:
+VOYORA strictly adheres to pure frontend web standards:
 
-* **HTML5** — Semantic, accessible SPA markup
-* **CSS3** — Custom design system with Deep Navy (`#0a1628`), Vibrant Teal (`#0d9488`), Warm Gold (`#f59e0b`), Soft Beige (`#faf6f0`), glassmorphism, responsive grids, and CSS animations
-* **Vanilla JavaScript (ES6+)** — Reactive central state store (`voyoraState`), dynamic SVG vector mapping, algorithmic budget optimizer, group voting consensus engine, and offline caching
+* **HTML5** — Semantic, accessible, high-performance structure
+* **CSS3** — CSS perspective (`perspective: 1200px`), 3D transforms (`rotateX`, `rotateY`, `translateZ`, `scale`), depth layering, glassmorphism (`backdrop-filter: blur()`), realistic ambient glow, and smooth animations
+* **Vanilla JavaScript (ES6+)** — Pure JS 3D Globe Canvas Engine, requestAnimationFrame 3D tilt calculations, 3D Coverflow Carousel math, interactive SVG route trajectories, animated number counters, and centralized reactive state store (`voyoraState`)
 * **PWA Ready** — `manifest.json` + `sw.js` (Service Worker) for standalone installability and offline asset caching
 
-> ❌ **No heavy frameworks used** (Zero React, Next.js, Vue, Angular, TypeScript, Bootstrap, Tailwind, jQuery, etc.)
+> ❌ **Zero heavy frameworks used** (No React, Vue, Angular, Bootstrap, Tailwind, jQuery, etc.)
 
 ---
 
-## 🌟 The 5 Major Features Added
+## 🌟 3D Visual & Interactive Highlights
 
-### 1. 🗺️ VOYORA Smart Trip Map ("Your Journey on the Map")
-* **Interactive Geospatial Canvas:** Vector-rendered interactive map with realistic coordinates for major Indian destinations (Mumbai, Goa, Kashmir, Rajasthan, Kerala, Bengaluru).
-* **Multi-Category Pinning:** Hotels (🏨), Attractions (📍), Restaurants & Cafes (🍴/☕), Hidden Gems (🌿), and Activities (🎯).
-* **Bidirectional Synchronization:**
-  * Clicking an activity in the itinerary timeline pans and highlights the corresponding pin on the map.
-  * Clicking a map pin opens a detailed preview drawer and scrolls to that activity in the timeline (or adds it to the trip).
-* **Category & Day Filters:** Filter map points by day (Day 1, Day 2, Day 3) or by establishment category.
+### 1. 🌐 Interactive 3D Globe & Floating Destination Badges
+* **Spherical Dot Matrix Engine:** Canvas-rendered 3D rotating globe with latitude/longitude matrix and atmospheric glow.
+* **Cursor-Reactive Parallax:** Real-time 3D tilt responsive to cursor position across the hero viewport.
+* **Hub City Markers:** Glowing geographic nodes for Paris, Tokyo, Dubai, New York, and Mumbai.
+* **Orbiting Airplane & Floating Badges:** Interactive floating destination badges (`Paris 🇫🇷`, `Tokyo 🇯🇵`, `Dubai 🇦🇪`, `Bali 🇮🇩`, `Switzerland 🇨🇭`) positioned in 3D space with depth layering.
 
-### 2. 🔄 "CHANGE MY PLAN" AI Replanner
-* **Context-Aware Dynamic Modification:** Prominent inside the itinerary.
-* **Quick Prompt Chips:** *Make it cheaper*, *Remove an activity*, *Add more food experiences*, *Add adventure*, *More relaxing*, *Less travel time*, *More hidden gems*, *Replace outdoor activities*.
-* **Custom NLP Prompt Input:** Handles custom instructions such as *"I don't want museums. Give me local markets and street food."*
-* **Visual Diff Comparison:** Displays **Original Plan ➔ AI Updated Plan** with itemized diff badges and AI conversational reasoning.
-* **Undo Changes:** Snapshot recovery to restore prior plans seamlessly.
+### 2. 🎴 3D Mouse Tilt Experience (`Vanilla3DTilt`)
+* Reusable, hardware-accelerated 3D mouse tilt applied across search panels, experience cards, statistics, and featured trip cards.
+* Computes dynamic `rotateX()`, `rotateY()`, and `translateZ()` coordinates relative to card bounds with smooth ease-out interpolation.
 
-### 3. 📱 Offline Trip Mode (SIH Connectivity Solution)
-* **One-Click Offline Caching:** **"Save Trip Offline"** stores complete day-by-day itineraries, hotel vouchers, restaurant recommendations, and emergency helplines (`1363`, `112`, `108`) directly in `localStorage`.
-* **Live Status Indicators:** Navbar & footer pills dynamically toggle between **ONLINE 🟢** and **OFFLINE 🟠**.
-* **Simulated Offline Testing:** Built-in simulation toggle to demonstrate 100% offline functionality during live hackathon judging.
-* **Offline Trips Section:** Dedicated tab in *My Trips* showing all **🟢 Available Offline** itineraries.
+### 3. 🎡 3D Coverflow Destination Carousel
+* Spatial 3D coverflow carousel featuring Paris, Tokyo, Dubai, Bali, Swiss Alps, New York, Maldives, and Istanbul.
+* Smooth JavaScript 3D math: active center card (`scale: 1.05`, `translateZ: 80px`), flanked cards with graduated angle rotation (`rotateY`) and depth fading.
+* Keyboard arrow navigation, prev/next controls, and click-to-center support.
 
-### 4. 🏪 VOYORA Local Business Hub (Two-Sided Ecosystem)
-* **Tourist Discovery:** Discover certified local guides, authentic homestays, cultural workshops (e.g., Warli art & pottery), and culinary food walks.
-* **Special Offer Banners:** Highlighting promotional discounts (e.g., *🎁 20% OFF on Morning Heritage Strolls*).
-* **Add to Trip Action:** Seamlessly inserts local experiences into the active itinerary.
-* **Business Owner Dashboard:**
-  * Real-time metrics: *Profile Views*, *Trip Adds*, *Favorites Saved*, *Offer Clicks*, *Inquiry Trends*.
-  * Interactive Listing Manager: Form to register and publish hotels, homestays, food tours, or guide profiles.
-  * Promotional Campaign Creator: Launch discount vouchers and special offers.
+### 4. 🧭 3D Travel Experience Tiles
+* Multi-depth interactive category cards for **✈️ Adventure & Treks**, **🌊 Beach Escapes**, **🏔️ Mountain Journeys**, and **🏙️ City Exploration**.
+* Image scale & icon elevation on 3D hover using `translateZ()`.
 
-### 5. 👥 VOYORA Group Trip Planner ("PLAN TOGETHER")
-* **Collaborative Group Workspace:** Create group trips and generate shareable invite codes (e.g., `VOYORA-MUM26`).
-* **Traveler Roster:** Multi-traveler profile switcher (Aisha, Rohan, Priya, Kabir) for demonstration.
-* **Live Visual Voting Center:** Real-time poll progress bars with duplicate-vote prevention across activities, food spots, stays, and day excursions.
-* **AI Consensus Itinerary Generation:** VOYORA AI synthesizes group votes, per-person budget limits, and traveler counts into a balanced group itinerary.
+### 5. 🗺️ Interactive World Route Map
+* Stylized dark vector world map with pulsating city nodes.
+* Animated curved flight arcs (`stroke-dasharray` flow).
+* Hover popover cards showing flight highlights, weather, and instant trip builder shortcuts.
+
+### 6. 📊 Travel in Numbers (Animated Counters)
+* `IntersectionObserver`-powered smooth count-up animations for **120+ Destinations**, **50K+ Travellers**, **500+ Experiences**, and **4.9/5 Rating**.
+
+### 7. 🏙️ Featured Trip 3D Parallax (Dubai)
+* Full-width cinematic parallax imagery with floating glass statistics card (5 Days / 4 Nights, ₹39,999 onwards).
 
 ---
 
-## 🔥 "MAKE MY TRIP BETTER" AI Multi-Tier Optimizer
+## 🚀 Complete VOYORA AI Ecosystem
 
-Inside the itinerary, **"✨ MAKE MY TRIP BETTER"** analyzes distance, weather, sustainability, and available activities to generate 3 parallel plans:
-1. 💰 **BUDGET TIER:** Affordable homestays, local transport, free attractions (₹9,750).
-2. ⚖️ **BALANCED TIER (Recommended):** Optimal balance of boutique stays, food walks, and curated gems (₹14,250).
-3. ✨ **PREMIUM TIER:** 5-star heritage hotels, private cabs, exclusive yacht & fine-dining experiences (₹24,000).
-
----
-
-## 🏆 SIH Presentation "WOW" Demo Flow
-
-To demonstrate the full ecosystem live to judges:
-1. Click **⚡ 1-Click SIH Live Demo** on the homepage or header.
-2. The AI loads the **Mumbai 3-Day Trip (₹15,000 · Food + Culture + Photography)**.
-3. Switch to the **Smart Map** tab to see bidirectional route mapping and pin previews.
-4. Click **✨ MAKE MY TRIP BETTER** to compare Budget, Balanced, and Premium tiers.
-5. Click **✨ CHANGE MY PLAN** and select *"Remove museum / relax pace"* to inspect live AI replanning diffs.
-6. Navigate to the **Local Business Hub** and click *"+ Add to Trip"* on the *Khau Galli Food Tour*.
-7. Open **Group Travel ("Plan Together")**, switch traveler profiles, and vote on polls.
-8. Click **✨ Create Group Itinerary** to generate the consensus plan.
-9. Click **📥 Save Trip Offline** and test the **OFFLINE 🟠** toggle to show instant offline accessibility.
+* **✨ AI Trip Planner:** 7-step customizable wizard balancing routes, budgets, accommodation styles, and local activities.
+* **🔄 "CHANGE MY PLAN" AI Replanner:** Dynamic itinerary restructuring with natural language input, rule chips, **Original Plan ➔ AI Updated Plan** diff comparisons, and instant snapshot undo.
+* **✨ "MAKE MY TRIP BETTER" 3-Tier Engine:** Evaluates routes to generate **💰 Budget Tier**, **⚖️ Balanced Tier**, and **✨ Premium Tier** options.
+* **🏪 Local Business Hub:** Two-sided ecosystem empowering grassroots tour guides, certified homestays, Warli art workshops, and street food tours.
+* **👥 Group Travel Planner ("PLAN TOGETHER"):** Multi-traveler workspace with unique invite codes (e.g. `VOYORA-MUM26`), live voting progress bars with duplicate protection, and AI group consensus itinerary generation.
+* **📱 Guaranteed Offline Trip Mode:** One-click caching to `localStorage` with live network indicators (**ONLINE 🟢** / **OFFLINE 🟠**) and simulation toggle for hackathon judging.
+* **💬 Multilingual AI Travel Assistant:** Context-aware companion supporting English, Hindi (हिन्दी), and Marathi (मराठी).
+* **⚡ 1-Click SIH Live Presentation Demo:** Instant pre-loaded Mumbai 3-Day showcase preset.
 
 ---
 
@@ -91,15 +74,20 @@ To demonstrate the full ecosystem live to judges:
 
 ```
 VOYORA/
-├── index.html        # Single-file complete application (HTML5, CSS3, Vanilla JS)
+├── index.html        # Semantic HTML5 single-page application
+├── style.css         # 3D CSS3 styles, perspective, glassmorphism, responsive grid
+├── script.js         # Vanilla JS 3D Globe, Tilt Engine, Coverflow, AI ecosystem
 ├── manifest.json     # PWA Web App Manifest
-├── sw.js             # Service Worker for offline asset caching
-└── README.md         # Architecture, Features & SIH Documentation
+├── sw.js             # Service Worker for offline caching
+└── README.md         # Architecture, 3D Features & SIH Documentation
 ```
 
 ---
 
-## 📜 License
+## 📜 Commit Information
 
-Created with ❤️ for Smart India Hackathon (SIH) 2026.
-**VOYORA — Your World, Your Way.**
+* **Commit 3:** *feat: complete 3D immersive redesign of VOYORA with 3D Globe, Coverflow carousel, 3D mouse tilt, and dark futuristic glassmorphism*
+* **Repository:** [https://github.com/sidzooni-ctrl/VOYORA](https://github.com/sidzooni-ctrl/VOYORA)
+
+Created with ❤️ for Smart India Hackathon (SIH) 2026.  
+**VOYORA — Your world, your way.**
