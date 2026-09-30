@@ -242,13 +242,13 @@ class Globe3DEngine {
       });
     }
 
-    // Cute Destination Hub City Markers
+    // Fresh Destination Hub City Markers (Tiny Butter Yellow with Glow)
     this.cities = [
-      { name: 'Paris', lat: 48.85, lon: 2.35, color: '#f48fb1' },
-      { name: 'Tokyo', lat: 35.67, lon: 139.65, color: '#b79cff' },
-      { name: 'Dubai', lat: 25.20, lon: 55.27, color: '#ff9a8b' },
-      { name: 'New York', lat: 40.71, lon: -74.00, color: '#79cff2' },
-      { name: 'Mumbai', lat: 19.07, lon: 72.87, color: '#a8e6cf' }
+      { name: 'Paris', lat: 48.85, lon: 2.35, color: '#ffd966' },
+      { name: 'Tokyo', lat: 35.67, lon: 139.65, color: '#ffd966' },
+      { name: 'Dubai', lat: 25.20, lon: 55.27, color: '#ffd966' },
+      { name: 'New York', lat: 40.71, lon: -74.00, color: '#ffd966' },
+      { name: 'Mumbai', lat: 19.07, lon: 72.87, color: '#ffd966' }
     ];
   }
 
@@ -287,26 +287,26 @@ class Globe3DEngine {
     this.rotationY += 0.005;
     this.rotationX += (this.targetRotX - this.rotationX) * 0.05;
 
-    // Dark Dreamy Purple-Midnight Ocean Gradient with Pastel Lighting
+    // Soft Sky Blue Ocean Gradient
     const oceanGrad = this.ctx.createRadialGradient(
       this.width / 2 - 30, this.height / 2 - 30, this.radius * 0.2,
       this.width / 2, this.height / 2, this.radius
     );
-    oceanGrad.addColorStop(0, '#382a5c');
-    oceanGrad.addColorStop(0.5, '#261c42');
-    oceanGrad.addColorStop(1, '#18112b');
+    oceanGrad.addColorStop(0, '#eaf6fd');
+    oceanGrad.addColorStop(0.5, '#c5eafb');
+    oceanGrad.addColorStop(1, '#8ed6f8');
 
     this.ctx.beginPath();
     this.ctx.arc(this.width / 2, this.height / 2, this.radius, 0, Math.PI * 2);
     this.ctx.fillStyle = oceanGrad;
     this.ctx.fill();
 
-    // Soft Lavender Atmospheric Border
+    // Fresh Lilac Atmospheric Border
     this.ctx.lineWidth = 3;
-    this.ctx.strokeStyle = 'rgba(183, 156, 255, 0.45)';
+    this.ctx.strokeStyle = 'rgba(167, 139, 250, 0.45)';
     this.ctx.stroke();
 
-    // Draw Spherical Pastel Dots (Land = Lavender & Mint, Water = Soft Cream)
+    // Draw Spherical Dots (Land = Fresh Mint #72D6B0 & Lilac #A78BFA, Water = Soft White)
     this.points.forEach(p => {
       const proj = this.project(p, this.rotationX, this.rotationY);
       if (proj.visible) {
@@ -315,9 +315,9 @@ class Globe3DEngine {
         this.ctx.arc(proj.x, proj.y, p.baseSize * proj.scale, 0, Math.PI * 2);
 
         if (p.isLand) {
-          this.ctx.fillStyle = `rgba(183, 156, 255, ${alpha * 0.95})`; // Pastel Lavender
+          this.ctx.fillStyle = `rgba(114, 214, 176, ${alpha * 0.95})`; // Fresh Mint
         } else {
-          this.ctx.fillStyle = `rgba(255, 244, 234, ${alpha * 0.35})`; // Soft Cream
+          this.ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.65})`; // Soft White
         }
         this.ctx.fill();
       }
@@ -328,8 +328,8 @@ class Globe3DEngine {
       const proj = this.project(c, this.rotationX, this.rotationY);
       if (proj.visible && proj.z > 20) {
         const cloudGrad = this.ctx.createRadialGradient(proj.x, proj.y, 0, proj.x, proj.y, c.radius * proj.scale);
-        cloudGrad.addColorStop(0, 'rgba(248, 247, 255, 0.28)');
-        cloudGrad.addColorStop(1, 'rgba(183, 156, 255, 0)');
+        cloudGrad.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+        cloudGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
         this.ctx.beginPath();
         this.ctx.arc(proj.x, proj.y, c.radius * proj.scale, 0, Math.PI * 2);
         this.ctx.fillStyle = cloudGrad;
@@ -337,7 +337,7 @@ class Globe3DEngine {
       }
     });
 
-    // Draw Cute Glowing City Nodes
+    // Draw Tiny Butter-Yellow Glowing City Nodes
     this.cities.forEach(city => {
       const phi = (90 - city.lat) * (Math.PI / 180);
       const theta = (city.lon + 180) * (Math.PI / 180);
@@ -348,19 +348,19 @@ class Globe3DEngine {
       };
       const proj = this.project(p, this.rotationX, this.rotationY);
       if (proj.visible && proj.z > 0) {
-        // Outer glow
+        // Outer butter-yellow glow
         this.ctx.beginPath();
-        this.ctx.arc(proj.x, proj.y, 7 * proj.scale, 0, Math.PI * 2);
+        this.ctx.arc(proj.x, proj.y, 6.5 * proj.scale, 0, Math.PI * 2);
         this.ctx.fillStyle = city.color;
-        this.ctx.shadowColor = city.color;
-        this.ctx.shadowBlur = 12;
+        this.ctx.shadowColor = 'rgba(255, 217, 102, 0.8)';
+        this.ctx.shadowBlur = 10;
         this.ctx.fill();
         this.ctx.shadowBlur = 0;
 
-        // Inner white dot
+        // Inner white/plum core
         this.ctx.beginPath();
         this.ctx.arc(proj.x, proj.y, 2.5 * proj.scale, 0, Math.PI * 2);
-        this.ctx.fillStyle = '#fff4ea';
+        this.ctx.fillStyle = '#ffffff';
         this.ctx.fill();
       }
     });
