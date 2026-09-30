@@ -1,51 +1,67 @@
 /* ==========================================================
-   VOYORA — Cute Dreamy Pastel 3D Travel Platform Stylesheet
-   Palette: Warm Cream (#FFF9F5), Soft Lavender (#F8F1FF, #C9B6FF),
-   Pastel Pink (#FF9FC5, #FFD6E5), Baby Blue (#A9DDF7),
-   Peach (#FFCBA4), Mint (#B8E6D0), Dark Plum Text (#302A3A)
-   Pure CSS3 • Soft 3D Perspective • Glassmorphism • Dreamy Shadows
+   VOYORA — Dark Dreamy Pastel 3D Travel Platform Stylesheet
+   Direction: "DARK DREAMY PASTEL 3D TRAVEL"
+   Palette:
+     Main Background:      #241B35 (Deep Plum / Midnight ~45%)
+     Secondary Background: #30264A (Dark Purple Surfaces ~20%)
+     Card Background:      rgba(255, 255, 255, 0.08)
+     Primary Accent:       #9B8AFB (Rich Lavender ~15%)
+     Lavender:             #B79CFF
+     Pink:                 #F48FB1 (Pastel Pink ~10%)
+     Peach:                #FF9A8B (Pastel Peach ~5%)
+     Sky Blue:             #79CFF2 (Pastel Sky Blue ~5%)
+     Cream:                #FFF4EA (Highlights & Headings)
+     Soft White:           #F8F7FF (Text & Highlights)
+   Pure CSS3 • CSS 3D Perspective • Glassmorphism • Soft Dreamy Glow
    ========================================================== */
 
 :root {
-  /* Cute Pastel Color Palette */
-  --bg-primary: #fff9f5;
-  --bg-secondary: #f8f1ff;
-  --bg-tertiary: #f3f8fe;
-  --bg-card: rgba(255, 255, 255, 0.82);
-  --bg-card-hover: rgba(255, 255, 255, 0.95);
-  --bg-glass: rgba(255, 249, 245, 0.78);
-  --bg-glass-card: rgba(255, 255, 255, 0.65);
+  /* Dark Dreamy Pastel Color System */
+  --bg-primary: #241b35;
+  --bg-secondary: #30264a;
+  --bg-tertiary: #1c142b;
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --bg-card-hover: rgba(255, 255, 255, 0.13);
+  --bg-glass: rgba(36, 27, 53, 0.85);
+  --bg-glass-card: rgba(48, 38, 74, 0.72);
 
-  --pink-primary: #ff9fc5;
+  --primary-accent: #9b8afb;
+  --lavender: #b79cff;
+  --lavender-dark: #9b8afb;
+  --lavender-light: #e8deff;
+  --lavender-glow: rgba(183, 156, 255, 0.35);
+
+  --pink-primary: #f48fb1;
   --pink-light: #ffd6e5;
-  --pink-glow: rgba(255, 159, 197, 0.35);
+  --pink-glow: rgba(244, 143, 177, 0.35);
 
-  --lavender: #c9b6ff;
-  --lavender-light: #e8e0ff;
-  --lavender-glow: rgba(201, 182, 255, 0.35);
+  --peach: #ff9a8b;
+  --peach-light: #ffe5d3;
+  --peach-glow: rgba(255, 154, 139, 0.35);
 
-  --baby-blue: #a9ddf7;
-  --baby-blue-light: #daf0fc;
-  --baby-blue-glow: rgba(169, 221, 247, 0.35);
+  --baby-blue: #79cff2;
+  --baby-blue-light: #d4f0fd;
+  --baby-blue-glow: rgba(121, 207, 242, 0.35);
 
-  --peach: #ffcba4;
-  --peach-light: #ffe8d6;
-  --peach-glow: rgba(255, 203, 164, 0.35);
+  --mint: #a8e6cf;
+  --mint-light: #dcf7e9;
+  --mint-glow: rgba(168, 230, 207, 0.35);
 
-  --mint: #b8e6d0;
-  --mint-light: #e0f6ec;
-  --mint-glow: rgba(184, 230, 208, 0.35);
-
-  --text-main: #302a3a;
-  --text-muted: #766d7c;
-  --text-dim: #9e96a6;
+  --cream: #fff4ea;
+  --soft-white: #f8f7ff;
   --white: #ffffff;
 
+  /* Typography Colors */
+  --text-main: #f8f7ff;
+  --text-cream: #fff4ea;
+  --text-muted: #c0b8d8;
+  --text-dim: #8e82a8;
+
   /* Glass Borders */
-  --glass-border: rgba(255, 255, 255, 0.85);
-  --glass-border-subtle: rgba(201, 182, 255, 0.28);
-  --glass-border-pink: rgba(255, 159, 197, 0.4);
-  --glass-border-hover: rgba(201, 182, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-subtle: rgba(183, 156, 255, 0.22);
+  --glass-border-pink: rgba(244, 143, 177, 0.35);
+  --glass-border-hover: rgba(183, 156, 255, 0.55);
 
   /* Fonts */
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -58,12 +74,12 @@
   --radius-xl: 34px;
   --radius-full: 9999px;
 
-  /* Soft Dreamy Pastel Shadows */
-  --shadow-sm: 0 4px 16px rgba(48, 42, 58, 0.05);
-  --shadow-md: 0 10px 30px rgba(201, 182, 255, 0.18), 0 4px 12px rgba(255, 159, 197, 0.1);
-  --shadow-lg: 0 18px 48px rgba(201, 182, 255, 0.24), 0 8px 24px rgba(169, 221, 247, 0.15);
-  --shadow-3d: 0 24px 60px rgba(48, 42, 58, 0.08), 0 12px 32px rgba(255, 159, 197, 0.2);
-  --shadow-float: 0 14px 36px rgba(201, 182, 255, 0.28);
+  /* Soft Dreamy Pastel Glow & Depth Shadows */
+  --shadow-sm: 0 4px 16px rgba(15, 10, 24, 0.4);
+  --shadow-md: 0 10px 30px rgba(15, 10, 24, 0.5), 0 0 20px rgba(155, 138, 251, 0.12);
+  --shadow-lg: 0 18px 48px rgba(15, 10, 24, 0.65), 0 0 35px rgba(244, 143, 177, 0.15);
+  --shadow-3d: 0 24px 60px rgba(12, 8, 20, 0.75), 0 0 40px rgba(183, 156, 255, 0.2);
+  --shadow-float: 0 14px 36px rgba(15, 10, 24, 0.6), 0 0 20px rgba(183, 156, 255, 0.25);
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -99,7 +115,7 @@ body {
 }
 
 /* ==========================================================
-   DREAMY PASTEL SKY BACKGROUND & FLOATING BLOBS
+   DARK DREAMY PASTEL AMBIENT BACKGROUND & GLOWING BLOBS
    ========================================================== */
 .ambient-bg {
   position: fixed;
@@ -113,62 +129,66 @@ body {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(201, 182, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 182, 255, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(183, 156, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183, 156, 255, 0.06) 1px, transparent 1px);
   background-size: 50px 50px;
-  mask-image: radial-gradient(circle at 50% 35%, black 25%, transparent 75%);
+  mask-image: radial-gradient(circle at 50% 35%, black 30%, transparent 80%);
 }
 
 .ambient-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.55;
+  filter: blur(140px);
   pointer-events: none;
-  animation: floatBlob 18s ease-in-out infinite alternate;
+  animation: floatBlob 20s ease-in-out infinite alternate;
 }
+
 .ambient-blob-1 {
-  width: 650px;
-  height: 650px;
+  width: 680px;
+  height: 680px;
   top: -160px;
   right: -100px;
-  background: radial-gradient(circle, var(--pink-light), var(--lavender-light));
+  background: radial-gradient(circle, rgba(155, 138, 251, 0.28) 0%, rgba(244, 143, 177, 0.18) 70%, transparent 100%);
 }
+
 .ambient-blob-2 {
-  width: 580px;
-  height: 580px;
+  width: 600px;
+  height: 600px;
   top: 35%;
   left: -150px;
-  background: radial-gradient(circle, var(--baby-blue-light), var(--mint-light));
-  animation-duration: 22s;
+  background: radial-gradient(circle, rgba(121, 207, 242, 0.22) 0%, rgba(183, 156, 255, 0.16) 70%, transparent 100%);
+  animation-duration: 24s;
 }
+
 .ambient-blob-3 {
-  width: 620px;
-  height: 620px;
+  width: 640px;
+  height: 640px;
   bottom: 8%;
   right: -120px;
-  background: radial-gradient(circle, var(--peach-light), var(--pink-light));
-  animation-duration: 20s;
+  background: radial-gradient(circle, rgba(255, 154, 139, 0.24) 0%, rgba(244, 143, 177, 0.16) 70%, transparent 100%);
+  animation-duration: 22s;
 }
 
 /* Floating Dreamy Cloud & Sparkle Particles */
 .particle-cloud {
   position: absolute;
   font-size: 1.8rem;
-  opacity: 0.45;
+  opacity: 0.35;
+  filter: drop-shadow(0 0 8px rgba(183, 156, 255, 0.4));
   pointer-events: none;
-  animation: floatCloud 24s linear infinite;
+  animation: floatCloud 28s linear infinite;
 }
 .particle-cloud-1 { top: 14%; left: 8%; animation-delay: 0s; }
-.particle-cloud-2 { top: 48%; right: 6%; animation-delay: -10s; }
-.particle-cloud-3 { bottom: 22%; left: 12%; animation-delay: -18s; }
+.particle-cloud-2 { top: 48%; right: 6%; animation-delay: -12s; }
+.particle-cloud-3 { bottom: 22%; left: 12%; animation-delay: -20s; }
 
 .particle-star {
   position: absolute;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--pink-primary);
-  opacity: 0.6;
+  opacity: 0.7;
   pointer-events: none;
+  filter: drop-shadow(0 0 8px currentColor);
   animation: twinkle 4s ease-in-out infinite;
 }
 .particle-star-1 { top: 22%; left: 45%; }
@@ -180,7 +200,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--text-cream);
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
@@ -232,21 +252,22 @@ button {
   gap: 8px;
   padding: 6px 18px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid var(--pink-light);
-  color: #d1568c;
+  background: rgba(48, 38, 74, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(183, 156, 255, 0.35);
+  color: var(--lavender);
   font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 16px rgba(15, 10, 24, 0.4), 0 0 14px rgba(183, 156, 255, 0.2);
 }
 
 .section-title {
   font-size: clamp(2.2rem, 4.2vw, 3.2rem);
   margin-bottom: 14px;
-  color: var(--text-main);
+  color: var(--text-cream);
 }
 
 .section-subtitle {
@@ -255,23 +276,23 @@ button {
   line-height: 1.7;
 }
 
-/* Cute Pastel Text Gradients */
+/* Rich Pastel Text Gradients */
 .text-gradient {
-  background: linear-gradient(135deg, #ff8fb7 0%, #a88eff 50%, #6dcaf8 100%);
+  background: linear-gradient(135deg, #9b8afb 0%, #f48fb1 50%, #79cff2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-purple {
-  background: linear-gradient(135deg, #c9b6ff 0%, #ff9fc5 100%);
+  background: linear-gradient(135deg, #79cff2 0%, #b79cff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #ff9fc5 0%, #ffcba4 100%);
+  background: linear-gradient(135deg, #f48fb1 0%, #ff9a8b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -303,7 +324,7 @@ button {
 }
 
 .glass-card:hover {
-  border-color: var(--pink-primary);
+  border-color: var(--lavender);
   box-shadow: var(--shadow-3d);
 }
 
@@ -312,7 +333,7 @@ button {
   transform-style: preserve-3d;
 }
 
-/* Cute Buttons */
+/* Buttons with Rich Contrast */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -330,41 +351,43 @@ button {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ff9fc5 0%, #ffcba4 100%);
-  color: #302a3a;
-  box-shadow: 0 6px 20px rgba(255, 159, 197, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #9b8afb 0%, #f48fb1 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(155, 138, 251, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .btn-primary:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 28px rgba(255, 159, 197, 0.55);
+  box-shadow: 0 12px 32px rgba(244, 143, 177, 0.55), 0 0 20px rgba(155, 138, 251, 0.4);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border: 1.5px solid var(--lavender-light);
-  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(183, 156, 255, 0.3);
+  color: var(--text-cream);
   box-shadow: var(--shadow-sm);
 }
 .btn-secondary:hover {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.15);
   border-color: var(--lavender);
-  color: #7957db;
+  color: #ffffff;
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 24px rgba(183, 156, 255, 0.3);
 }
 
 .btn-ai {
-  background: linear-gradient(135deg, #c9b6ff 0%, #a9ddf7 100%);
-  color: #302a3a;
-  box-shadow: 0 6px 20px rgba(201, 182, 255, 0.4);
+  background: linear-gradient(135deg, #79cff2 0%, #b79cff 100%);
+  color: #1c142b;
+  box-shadow: 0 6px 20px rgba(121, 207, 242, 0.4);
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 .btn-ai:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(201, 182, 255, 0.6);
+  box-shadow: 0 10px 30px rgba(183, 156, 255, 0.6);
 }
 
 .btn-sm {
@@ -385,21 +408,23 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid var(--lavender-light);
-  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(183, 156, 255, 0.3);
+  color: var(--text-cream);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
 }
 .btn-icon:hover {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.18);
   border-color: var(--pink-primary);
   color: var(--pink-primary);
   transform: scale(1.08);
+  box-shadow: 0 0 16px rgba(244, 143, 177, 0.35);
 }
 
 /* ==========================================================
-   1. NAVBAR — Cute Floating Pill Glassmorphism
+   1. NAVBAR — Floating Pill Dark Glassmorphism
    ========================================================== */
 .navbar {
   position: fixed;
@@ -416,22 +441,22 @@ button {
   margin: 0 auto;
   height: var(--nav-height);
   padding: 0 28px;
-  background: rgba(255, 249, 245, 0.85);
+  background: rgba(36, 27, 53, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 10px 32px rgba(201, 182, 255, 0.2), 0 2px 8px rgba(255, 159, 197, 0.1);
+  box-shadow: 0 10px 32px rgba(15, 10, 24, 0.6), 0 0 20px rgba(155, 138, 251, 0.15);
   transition: all var(--transition-smooth);
 }
 
 .navbar.scrolled .navbar-container {
   height: 68px;
-  background: rgba(255, 249, 245, 0.95);
-  box-shadow: 0 14px 40px rgba(201, 182, 255, 0.28);
+  background: rgba(36, 27, 53, 0.95);
+  box-shadow: 0 14px 40px rgba(15, 10, 24, 0.75), 0 0 25px rgba(155, 138, 251, 0.2);
 }
 
 .nav-brand {
@@ -445,27 +470,26 @@ button {
   width: 38px;
   height: 38px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #ff9fc5, #c9b6ff);
+  background: linear-gradient(135deg, #9b8afb, #f48fb1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 900;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(255, 159, 197, 0.4);
-  transform-style: preserve-3d;
-  transition: transform var(--transition-smooth);
+  box-shadow: 0 6px 16px rgba(155, 138, 251, 0.4);
+  transform: rotate(-6deg);
+  transition: transform var(--transition-fast);
 }
 .nav-brand:hover .brand-logo-3d {
-  transform: rotateY(180deg) scale(1.08);
+  transform: rotate(6deg) scale(1.08);
 }
 
 .brand-name {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.4rem;
-  letter-spacing: -0.02em;
-  color: var(--text-main);
+  font-size: 1.45rem;
+  letter-spacing: -0.03em;
+  color: var(--text-cream);
 }
 .brand-name span {
   color: var(--pink-primary);
@@ -474,29 +498,31 @@ button {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   list-style: none;
 }
 
 .nav-item a {
   padding: 8px 16px;
   border-radius: var(--radius-full);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-muted);
   transition: all var(--transition-fast);
-  display: block;
 }
-.nav-item a:hover,
+.nav-item a:hover {
+  color: var(--text-cream);
+  background: rgba(255, 255, 255, 0.08);
+}
 .nav-item a.active {
-  color: #7957db;
-  background: rgba(201, 182, 255, 0.22);
+  color: var(--pink-primary);
+  background: rgba(244, 143, 177, 0.14);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
 }
 
 .status-indicator {
@@ -504,12 +530,12 @@ button {
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
-  background: rgba(184, 230, 208, 0.35);
-  border: 1px solid rgba(184, 230, 208, 0.8);
+  background: rgba(168, 230, 207, 0.15);
+  border: 1px solid rgba(168, 230, 207, 0.4);
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 700;
-  color: #1b6845;
+  color: var(--mint);
   cursor: pointer;
 }
 .status-indicator .status-dot {
@@ -517,17 +543,17 @@ button {
   height: 7px;
   border-radius: 50%;
   background: #22c55e;
-  box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 8px #22c55e;
   animation: pulseDot 2s infinite;
 }
 .status-indicator.offline {
-  background: rgba(255, 203, 164, 0.4);
-  border-color: rgba(255, 203, 164, 0.9);
-  color: #9a480d;
+  background: rgba(255, 154, 139, 0.2);
+  border-color: rgba(255, 154, 139, 0.6);
+  color: var(--peach);
 }
 .status-indicator.offline .status-dot {
   background: var(--peach);
-  box-shadow: 0 0 6px var(--peach);
+  box-shadow: 0 0 8px var(--peach);
 }
 
 .hamburger-btn {
@@ -538,14 +564,14 @@ button {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  background: var(--white);
-  border: 1.5px solid var(--lavender-light);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(183, 156, 255, 0.3);
   border-radius: var(--radius-md);
 }
 .hamburger-btn span {
   width: 20px;
   height: 2px;
-  background: var(--text-main);
+  background: var(--text-cream);
   border-radius: 2px;
 }
 
@@ -555,9 +581,9 @@ button {
   top: 86px;
   left: 20px;
   right: 20px;
-  background: rgba(255, 249, 245, 0.96);
+  background: rgba(36, 27, 53, 0.96);
   backdrop-filter: blur(28px);
-  border: 1.5px solid var(--lavender-light);
+  border: 1.5px solid rgba(183, 156, 255, 0.3);
   border-radius: var(--radius-xl);
   padding: 24px;
   z-index: 999;
@@ -575,55 +601,53 @@ button {
   border-radius: var(--radius-md);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-main);
+  color: var(--text-cream);
 }
 .mobile-nav a.active,
 .mobile-nav a:hover {
-  background: rgba(201, 182, 255, 0.2);
-  color: #7957db;
+  background: rgba(244, 143, 177, 0.16);
+  color: var(--pink-primary);
 }
 
 /* ==========================================================
-   2. HERO SECTION — MAIN CUTE 3D EXPERIENCE
+   2. HERO SECTION — DARK DREAMY PASTEL 3D EXPERIENCE
    ========================================================== */
 .hero-section {
-  min-height: 96vh;
+  padding-top: 155px;
+  padding-bottom: 70px;
+  position: relative;
+  min-height: 90vh;
   display: flex;
   align-items: center;
-  padding: calc(var(--nav-height) + 50px) 0 70px;
-  position: relative;
-  overflow: hidden;
-  perspective: 1400px;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: 36px;
+  gap: 40px;
   align-items: center;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 10;
-  transform-style: preserve-3d;
+  z-index: 5;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 8px 20px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid var(--pink-light);
-  color: #d1568c;
+  background: rgba(48, 38, 74, 0.85);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(183, 156, 255, 0.35);
+  color: var(--lavender);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 24px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 16px rgba(15, 10, 24, 0.4), 0 0 16px rgba(183, 156, 255, 0.2);
 }
 .hero-badge .badge-icon {
   animation: rotateSlow 8s linear infinite;
@@ -637,7 +661,7 @@ button {
   line-height: 1.05;
   margin-bottom: 22px;
   text-transform: uppercase;
-  color: var(--text-main);
+  color: var(--text-cream);
 }
 
 .hero-description {
@@ -651,11 +675,12 @@ button {
 .hero-actions {
   display: flex;
   gap: 16px;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 /* ==========================================================
-   3. CUTE 3D PASTEL GLOBE
+   3. DARK DREAMY 3D GLOBE WITH PASTEL LIGHTING
    ========================================================== */
 .hero-globe-wrapper {
   position: relative;
@@ -685,7 +710,7 @@ button {
   position: relative;
   z-index: 2;
   cursor: grab;
-  box-shadow: 0 16px 40px rgba(169, 221, 247, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 60px rgba(15, 10, 24, 0.8), 0 0 50px rgba(155, 138, 251, 0.25);
 }
 #globeCanvas:active {
   cursor: grabbing;
@@ -698,8 +723,8 @@ button {
   width: 320px;
   height: 40px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(201, 182, 255, 0.35) 0%, rgba(255, 159, 197, 0.15) 45%, transparent 75%);
-  filter: blur(10px);
+  background: radial-gradient(ellipse, rgba(155, 138, 251, 0.35) 0%, rgba(244, 143, 177, 0.15) 45%, transparent 75%);
+  filter: blur(12px);
   pointer-events: none;
   z-index: 1;
 }
@@ -709,7 +734,7 @@ button {
   width: 480px;
   height: 480px;
   border-radius: 50%;
-  background: radial-gradient(circle, transparent 60%, rgba(201, 182, 255, 0.25) 80%, rgba(255, 159, 197, 0.3) 100%);
+  background: radial-gradient(circle, transparent 58%, rgba(183, 156, 255, 0.25) 80%, rgba(244, 143, 177, 0.35) 100%);
   pointer-events: none;
   z-index: 3;
 }
@@ -717,7 +742,7 @@ button {
 .orbit-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1.5px dashed rgba(255, 159, 197, 0.45);
+  border: 1.5px dashed rgba(244, 143, 177, 0.45);
   pointer-events: none;
 }
 .orbit-ring-1 {
@@ -734,21 +759,21 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 4px 10px rgba(255, 159, 197, 0.5));
+  filter: drop-shadow(0 0 12px rgba(244, 143, 177, 0.7));
   z-index: 10;
   pointer-events: none;
 }
 
-/* Cute Floating 3D Destination Cards Around Globe */
+/* Floating 3D Destination Cards Around Globe */
 .floating-dest-badge {
   position: absolute;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid var(--pink-light);
+  background: rgba(48, 38, 74, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(183, 156, 255, 0.35);
   border-radius: var(--radius-full);
-  color: var(--text-main);
+  color: var(--text-cream);
   font-weight: 700;
   font-size: 0.88rem;
   box-shadow: var(--shadow-float);
@@ -762,7 +787,7 @@ button {
 }
 .floating-dest-badge:hover {
   border-color: var(--pink-primary);
-  box-shadow: 0 16px 36px rgba(255, 159, 197, 0.4);
+  box-shadow: 0 16px 36px rgba(15, 10, 24, 0.7), 0 0 25px rgba(244, 143, 177, 0.5);
   transform: scale(1.12) translateZ(35px) !important;
 }
 
@@ -773,7 +798,7 @@ button {
 .badge-pos-5 { top: 44%; right: -35px; }
 
 /* ==========================================================
-   4. 3D FLOATING SEARCH / TRIP PLANNER
+   4. 3D FLOATING SEARCH / TRIP PLANNER PANEL
    ========================================================== */
 .hero-search-wrapper {
   margin-top: 50px;
@@ -783,10 +808,10 @@ button {
 
 .search-3d-panel {
   padding: 32px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(48, 38, 74, 0.82);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(183, 156, 255, 0.25);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-3d);
   transform-style: preserve-3d;
@@ -804,7 +829,7 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-main);
+  color: var(--text-cream);
 }
 
 .search-3d-grid {
@@ -836,10 +861,10 @@ button {
 .search-input-box select {
   width: 100%;
   padding: 13px 16px;
-  background: var(--white);
-  border: 1.5px solid var(--lavender-light);
+  background: rgba(36, 27, 53, 0.85);
+  border: 1.5px solid rgba(183, 156, 255, 0.22);
   border-radius: var(--radius-md);
-  color: var(--text-main);
+  color: var(--text-cream);
   font-size: 0.95rem;
   font-family: inherit;
   font-weight: 600;
@@ -849,11 +874,11 @@ button {
 .search-input-box select:focus {
   outline: none;
   border-color: var(--pink-primary);
-  box-shadow: 0 0 16px rgba(255, 159, 197, 0.35);
+  box-shadow: 0 0 16px rgba(244, 143, 177, 0.35);
 }
 
 /* ==========================================================
-   5. DESTINATION CAROUSEL (FLOATING TRAVEL POSTCARDS)
+   5. DESTINATION CAROUSEL (3D POSTCARDS COVERFLOW)
    ========================================================== */
 .carousel-3d-wrapper {
   position: relative;
@@ -878,8 +903,9 @@ button {
   height: 450px;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background: var(--white);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  background: rgba(48, 38, 74, 0.75);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(183, 156, 255, 0.25);
   box-shadow: var(--shadow-lg);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
@@ -897,7 +923,7 @@ button {
 .carousel-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(48, 42, 58, 0.88) 88%);
+  background: linear-gradient(180deg, transparent 35%, rgba(28, 20, 43, 0.92) 88%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -911,12 +937,12 @@ button {
   left: 18px;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(36, 27, 53, 0.85);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--pink-light);
+  border: 1px solid rgba(244, 143, 177, 0.4);
   font-size: 0.78rem;
   font-weight: 700;
-  color: #d1568c;
+  color: var(--pink-primary);
   box-shadow: var(--shadow-sm);
 }
 
@@ -924,12 +950,12 @@ button {
   font-size: 1.55rem;
   font-weight: 700;
   margin-bottom: 4px;
-  color: #ffffff;
+  color: var(--text-cream);
 }
 
 .carousel-card-desc {
   font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-muted);
   margin-bottom: 14px;
   line-height: 1.4;
 }
@@ -947,7 +973,7 @@ button {
 }
 .carousel-price small {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--text-dim);
   font-weight: 400;
 }
 
@@ -960,7 +986,7 @@ button {
 }
 
 /* ==========================================================
-   6. 3D TRAVEL EXPERIENCES (PASTEL TINTED CARDS)
+   6. 3D TRAVEL EXPERIENCES (PASTEL ACCENT TILES)
    ========================================================== */
 .experience-grid {
   display: grid;
@@ -973,8 +999,8 @@ button {
   border-radius: var(--radius-xl);
   position: relative;
   overflow: hidden;
-  background: var(--white);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  background: rgba(48, 38, 74, 0.8);
+  border: 2px solid rgba(183, 156, 255, 0.25);
   box-shadow: var(--shadow-md);
   cursor: pointer;
   perspective: 1000px;
@@ -1002,7 +1028,7 @@ button {
 .experience-card-content {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 249, 245, 0.1) 0%, rgba(48, 42, 58, 0.88) 78%);
+  background: linear-gradient(180deg, rgba(36, 27, 53, 0.15) 0%, rgba(28, 20, 43, 0.95) 78%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1015,8 +1041,8 @@ button {
   width: 52px;
   height: 52px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid var(--pink-light);
+  background: rgba(48, 38, 74, 0.9);
+  border: 1.5px solid rgba(183, 156, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1030,27 +1056,27 @@ button {
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 6px;
-  color: #ffffff;
+  color: var(--text-cream);
   transform: translateZ(20px);
 }
 
 .experience-desc {
   font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-muted);
   margin-bottom: 16px;
   line-height: 1.45;
   transform: translateZ(10px);
 }
 
 /* ==========================================================
-   7. CUTE PASTEL WORLD ROUTE MAP
+   7. DARK DREAMY PASTEL WORLD ROUTE MAP
    ========================================================== */
 .world-map-wrapper {
   position: relative;
   width: 100%;
   height: 540px;
-  background: radial-gradient(circle at 50% 50%, #f3ecff 0%, #e8f4fc 100%);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  background: #30264a;
+  border: 2px solid rgba(183, 156, 255, 0.22);
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
@@ -1068,7 +1094,7 @@ button {
   stroke-width: 2.5;
   stroke-dasharray: 6 6;
   fill: none;
-  filter: drop-shadow(0 2px 6px rgba(201, 182, 255, 0.6));
+  filter: drop-shadow(0 0 8px rgba(183, 156, 255, 0.6));
   animation: dashFlow 25s linear infinite;
 }
 
@@ -1084,7 +1110,7 @@ button {
   height: 14px;
   border-radius: 50%;
   background: var(--pink-primary);
-  box-shadow: 0 0 12px var(--pink-primary);
+  box-shadow: 0 0 14px var(--pink-primary);
   position: relative;
 }
 .node-pulse::after {
@@ -1099,13 +1125,13 @@ button {
 .node-label {
   margin-top: 6px;
   padding: 3px 10px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(36, 27, 53, 0.9);
   backdrop-filter: blur(8px);
-  border: 1px solid var(--lavender-light);
+  border: 1px solid rgba(183, 156, 255, 0.3);
   border-radius: var(--radius-full);
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--text-cream);
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
 }
@@ -1116,9 +1142,9 @@ button {
   left: 24px;
   max-width: 360px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(36, 27, 53, 0.95);
   backdrop-filter: blur(20px);
-  border: 1.5px solid var(--pink-light);
+  border: 1.5px solid rgba(183, 156, 255, 0.35);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-3d);
   z-index: 30;
@@ -1130,7 +1156,7 @@ button {
 }
 
 /* ==========================================================
-   8. TRAVEL IN NUMBERS (CUTE PASTEL ACCENT CARDS)
+   8. TRAVEL IN NUMBERS (PASTEL ACCENT STATS)
    ========================================================== */
 .stats-grid {
   display: grid;
@@ -1141,9 +1167,9 @@ button {
 .stat-box-3d {
   padding: 36px 24px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(183, 156, 255, 0.22);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-smooth);
@@ -1161,12 +1187,12 @@ button {
   font-family: var(--font-heading);
   letter-spacing: -0.03em;
   margin-bottom: 6px;
-  color: var(--text-main);
+  color: var(--text-cream);
 }
-.stat-box-3d:nth-child(1) .stat-number { color: #e05b90; }
-.stat-box-3d:nth-child(2) .stat-number { color: #7957db; }
-.stat-box-3d:nth-child(3) .stat-number { color: #1599db; }
-.stat-box-3d:nth-child(4) .stat-number { color: #e58742; }
+.stat-box-3d:nth-child(1) .stat-number { color: var(--pink-primary); }
+.stat-box-3d:nth-child(2) .stat-number { color: var(--lavender); }
+.stat-box-3d:nth-child(3) .stat-number { color: var(--baby-blue); }
+.stat-box-3d:nth-child(4) .stat-number { color: var(--peach); }
 
 .stat-label {
   font-size: 0.95rem;
@@ -1175,14 +1201,14 @@ button {
 }
 
 /* ==========================================================
-   9. FEATURED TRIP (DUBAI CINEMATIC & SOFT)
+   9. FEATURED TRIP (DUBAI CINEMATIC & RICH)
    ========================================================== */
 .featured-trip-container {
   position: relative;
   height: 560px;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(183, 156, 255, 0.25);
   box-shadow: var(--shadow-lg);
   display: flex;
   align-items: center;
@@ -1202,7 +1228,7 @@ button {
 .featured-trip-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(255, 249, 245, 0.95) 0%, rgba(255, 249, 245, 0.6) 55%, transparent 100%);
+  background: linear-gradient(90deg, rgba(36, 27, 53, 0.96) 0%, rgba(36, 27, 53, 0.65) 55%, transparent 100%);
   display: flex;
   align-items: center;
   padding: 60px;
@@ -1211,17 +1237,17 @@ button {
 .featured-glass-card {
   max-width: 500px;
   padding: 38px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(48, 38, 74, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1.5px solid var(--pink-light);
+  border: 1.5px solid rgba(183, 156, 255, 0.3);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-3d);
   transform-style: preserve-3d;
 }
 
 /* ==========================================================
-   10. TESTIMONIALS (FLOATING TRAVEL POSTCARDS)
+   10. TESTIMONIALS (3D TRAVEL POSTCARDS)
    ========================================================== */
 .testimonials-grid {
   display: grid;
@@ -1231,9 +1257,9 @@ button {
 
 .testimonial-card-3d {
   padding: 34px;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(183, 156, 255, 0.2);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
   display: flex;
@@ -1249,14 +1275,14 @@ button {
 }
 
 .testimonial-stars {
-  color: #f59e0b;
+  color: var(--peach);
   font-size: 1.1rem;
   margin-bottom: 14px;
 }
 
 .testimonial-quote {
   font-size: 1rem;
-  color: var(--text-main);
+  color: var(--text-cream);
   line-height: 1.7;
   margin-bottom: 22px;
 }
@@ -1275,7 +1301,7 @@ button {
 }
 .user-name {
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--text-cream);
   font-size: 1rem;
 }
 .user-location {
@@ -1284,7 +1310,7 @@ button {
 }
 
 /* ==========================================================
-   11. FINAL CTA — DREAMY PASTEL WORLD
+   11. FINAL CTA — DARK DREAMY HORIZON
    ========================================================== */
 .final-cta-section {
   position: relative;
@@ -1296,8 +1322,8 @@ button {
 .final-cta-card {
   padding: 80px 40px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 241, 255, 0.95) 100%);
-  border: 2px solid var(--pink-light);
+  background: linear-gradient(135deg, rgba(48, 38, 74, 0.95) 0%, rgba(36, 27, 53, 0.95) 100%);
+  border: 2px solid rgba(183, 156, 255, 0.35);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-3d);
   position: relative;
@@ -1308,7 +1334,7 @@ button {
 .floating-asset {
   position: absolute;
   pointer-events: none;
-  filter: drop-shadow(0 6px 12px rgba(201, 182, 255, 0.4));
+  filter: drop-shadow(0 6px 16px rgba(183, 156, 255, 0.4));
 }
 .floating-asset-plane {
   top: 40px;
@@ -1331,13 +1357,13 @@ button {
 }
 
 /* ==========================================================
-   12. FOOTER — SOFT DARK PLUM
+   12. FOOTER — DEEP MIDNIGHT PLUM
    ========================================================== */
 .footer {
-  background: #251e30;
-  border-top: 1.5px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
+  border-top: 1.5px solid rgba(183, 156, 255, 0.15);
   padding: 80px 0 32px;
-  color: #ded6e8;
+  color: var(--text-muted);
   position: relative;
   z-index: 10;
 }
@@ -1350,14 +1376,14 @@ button {
 }
 
 .footer-brand .brand-name {
-  color: #ffffff;
+  color: var(--text-cream);
 }
 
 .footer-brand p {
   margin-top: 14px;
   max-width: 320px;
   font-size: 0.92rem;
-  color: #b5a9c4;
+  color: var(--text-muted);
 }
 
 .footer-heading {
@@ -1365,7 +1391,7 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #ffffff;
+  color: var(--text-cream);
   margin-bottom: 18px;
 }
 
@@ -1377,7 +1403,7 @@ button {
 }
 .footer-links a {
   font-size: 0.9rem;
-  color: #b5a9c4;
+  color: var(--text-muted);
 }
 .footer-links a:hover {
   color: var(--pink-primary);
@@ -1386,14 +1412,14 @@ button {
 
 .footer-bottom {
   padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(183, 156, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
   font-size: 0.85rem;
-  color: #9b8ea8;
+  color: var(--text-dim);
 }
 
 /* ==========================================================
@@ -1402,9 +1428,9 @@ button {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(48, 42, 58, 0.65);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(18, 12, 28, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   z-index: 9999;
   display: none;
   align-items: center;
@@ -1418,16 +1444,17 @@ button {
 
 .modal-content-3d {
   background: var(--bg-primary);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(183, 156, 255, 0.3);
   border-radius: var(--radius-xl);
   max-width: 680px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   padding: 40px;
-  box-shadow: 0 24px 60px rgba(48, 42, 58, 0.25);
+  box-shadow: 0 24px 60px rgba(12, 8, 20, 0.8), 0 0 40px rgba(155, 138, 251, 0.2);
   position: relative;
   transform-style: preserve-3d;
+  color: var(--text-cream);
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1441,14 +1468,36 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(48, 42, 58, 0.06);
-  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-cream);
   transition: all var(--transition-fast);
 }
 .modal-close-btn:hover {
-  background: rgba(255, 159, 197, 0.3);
-  color: #d1568c;
+  background: rgba(244, 143, 177, 0.3);
+  color: var(--pink-primary);
   transform: rotate(90deg);
+}
+
+/* Modal Form Styles */
+.modal-content-3d input,
+.modal-content-3d select,
+.modal-content-3d textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(48, 38, 74, 0.85);
+  border: 1.5px solid rgba(183, 156, 255, 0.25);
+  border-radius: var(--radius-md);
+  color: var(--text-cream);
+  font-family: inherit;
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+.modal-content-3d input:focus,
+.modal-content-3d select:focus,
+.modal-content-3d textarea:focus {
+  outline: none;
+  border-color: var(--pink-primary);
+  box-shadow: 0 0 16px rgba(244, 143, 177, 0.35);
 }
 
 /* Toast Notifications */
@@ -1466,12 +1515,12 @@ button {
   align-items: center;
   gap: 14px;
   padding: 14px 22px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(48, 38, 74, 0.95);
   backdrop-filter: blur(20px);
-  border: 1.5px solid var(--pink-light);
+  border: 1.5px solid rgba(183, 156, 255, 0.35);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
-  color: var(--text-main);
+  color: var(--text-cream);
   font-size: 0.92rem;
   font-weight: 600;
   animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
